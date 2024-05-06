@@ -1,13 +1,12 @@
 import { config } from 'dotenv';
 
-import app from './app';
-
 config();
 
-// const HOST = process.env.HOST || 'localhost';
+import { server } from './app';
+
 const p = parseInt(process.env.PORT || '');
 const PORT = Number.isInteger(p) ? p : 3009;
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+server.listen(PORT, () => {
+  console.log(`Server listening on http://localhost:${PORT}`);
 });
