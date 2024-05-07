@@ -1,0 +1,17 @@
+.charDefault {
+  background-color: #E7DBFF;
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  margin: 5px;
+  flex: 0 0 auto;
+}
+
+.charTyped {
+  background-color: #BFA1FF;
+}
+
+.charCurrent {
+  background-color: #FFDBDB;
+  box-shadow: 0 0 20px rgba(0, 255, 178, 0.5)
+}
