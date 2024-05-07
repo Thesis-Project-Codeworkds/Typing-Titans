@@ -1,6 +1,7 @@
 import './MultiplayerCard.css'
 import Player1 from '../../assets/p1.svg';
 import Player2 from '../../assets/p2.svg';
+import ReadyButton from '../ReadyButton/ReadyButton';
 
 const MultiplayerCard = () => {
 
@@ -16,7 +17,7 @@ const MultiplayerCard = () => {
         <h4 className='player-title two'>Player Two</h4>
         <img src={Player2} alt="Player 2 Icon" />
       </div>
-      <button className='ready-button'>Ready?</button>
+      <ReadyButton />
     </div>
   )
 

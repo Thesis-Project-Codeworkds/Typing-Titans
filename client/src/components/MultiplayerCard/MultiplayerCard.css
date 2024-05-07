@@ -29,7 +29,7 @@
 
 .player-one-container {
   grid-column: 1 / 2;
-  
+
 }
 
 .player-two-container {
@@ -55,16 +55,4 @@
 
 .player-two-container img {
   padding: 30px;
-}
-
-.ready-button {
-  color: white;
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  height: 50px;
-  width: 120px;
-  margin: auto;
-  background-color: var(--main-color);
-  border: none;
-  font-size: 24px;
 }

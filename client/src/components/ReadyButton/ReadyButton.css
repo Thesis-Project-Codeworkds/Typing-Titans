@@ -1,0 +1,16 @@
+
+.ready-button:hover {
+  cursor: pointer;
+}
+
+.ready-button {
+  color: white;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  height: 50px;
+  width: 120px;
+  margin: auto;
+  background-color: var(--main-color);
+  border: none;
+  font-size: 24px;
+}

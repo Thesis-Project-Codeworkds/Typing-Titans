@@ -2,6 +2,8 @@ import { instrument } from '@socket.io/admin-ui';
 import { Server as SocketIOServer, Socket } from 'socket.io';
 import { Server as HttpServer } from 'http';
 
+let readyPlayers: string[] = [];
+
 const socket = (server: HttpServer) => {
 
   const io = new SocketIOServer(server, {
@@ -24,6 +26,16 @@ const socket = (server: HttpServer) => {
 
     socket.on('input', (value) => {
       console.log('input: ', value);
+    });
+
+    socket.on('isReady', () => {
+      readyPlayers = readyPlayers.includes(socket.id)
+        ? readyPlayers.filter(id => id != socket.id)
+        : [ ...readyPlayers, socket.id ];
+
+      if (readyPlayers.length > 1) {
+        io.emit('countdown');
+      }
     });
   });
 
