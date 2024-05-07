@@ -1,4 +1,6 @@
 #sentenceContainer {
   display: flex;
+  flex-wrap: wrap;
+  width: 75vw;
   margin-left: 10vw;
 }

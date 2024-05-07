@@ -5,6 +5,22 @@
   padding: 10px;
   margin: 5px;
   flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #000;
+}
+
+.charSpace {
+  border: 2px solid #E7DBFF;
+  background: none;
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  margin: 5px;
+  flex: 0 0 auto;
 }
 
 .charTyped {
@@ -13,5 +29,10 @@
 
 .charCurrent {
   background-color: #FFDBDB;
-  box-shadow: 0 0 20px rgba(0, 255, 178, 0.5)
+  box-shadow: 0 0 20px rgba(0, 255, 178, 0.5);
+}
+
+.charMistake {
+  background-color: #ff4444;
+  box-shadow: 0 0 20px rgba(0, 255, 178, 0.5);
 }
