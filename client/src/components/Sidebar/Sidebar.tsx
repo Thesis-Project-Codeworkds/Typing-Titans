@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { toggleSidebar } from '../../redux/sidebarSlice';
+import { Link } from 'react-router-dom';
 import keyboard from '../../assets/purpleKeyboard.svg'
 import menuIcon from '../../assets/menuIcon.svg'
 import friendsIcon from '../../assets/friendsIcon.svg'
@@ -20,8 +21,8 @@ const Sidebar = () => {
       <div className={`main-side-icon-container ${expanded ? 'expanded' : ''}`}>
         <img src={expanded ? dotsMenuIcon : menuIcon} alt="Menu Icon" onClick={() => dispatch(toggleSidebar())}/>
         <div className='main-side-icon-container-expanded'>
-          <img src={keyboard} alt="Keyboard Icon" />
-          {expanded && <span>MAIN HUB</span>}
+          <Link to="/multiplayer"><img src={keyboard} alt="Keyboard Icon" /></Link>
+          {expanded && <Link to="/multiplayer"><span>MAIN HUB</span></Link> }
         </div>
         <div className='main-side-icon-container-expanded'>
           <img src={friendsIcon} alt="Friends Icon" />

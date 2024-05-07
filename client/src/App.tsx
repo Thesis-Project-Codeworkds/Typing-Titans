@@ -1,8 +1,7 @@
-import Navbar from './components/Navbar/Navbar'
-import Sidebar from './components/Sidebar/Sidebar'
-import Form from './components/Form'
-import MainCard from './components/MainCard/MainCard'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css'
+import LandingPage from './pages/LandingPage';
+import MultiplayerPage from './pages/MultiplayerPage';
 
 
 
@@ -11,12 +10,12 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Sidebar />
-      <MainCard title="Training"/>
-      <MainCard title="Competitive"/>
-      <MainCard title="Daily Challenge"/>
-      <Form />
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path='/multiplayer' element={<MultiplayerPage />} />
+        </Routes>
+      </Router>
     </>
   )
 }
