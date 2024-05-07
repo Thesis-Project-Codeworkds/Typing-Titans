@@ -22,6 +22,8 @@ const socket = (server: HttpServer) => {
 
     socket.on('enter', () => {
       console.log('enter key');
+      socket.broadcast.emit('winner', 'Another player has won!');
+      socket.emit('winner', 'You won!');
     });
 
     socket.on('input', (value) => {
@@ -35,6 +37,11 @@ const socket = (server: HttpServer) => {
 
       if (readyPlayers.length > 1) {
         io.emit('countdown');
+
+        setTimeout(() => {
+          readyPlayers = [];
+          io.emit('start-competition');
+        }, 5000);
       }
     });
   });
