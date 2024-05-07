@@ -1,3 +1,4 @@
+import { instrument } from '@socket.io/admin-ui';
 import { Server as SocketIOServer, Socket } from 'socket.io';
 import { Server as HttpServer } from 'http';
 
@@ -6,7 +7,11 @@ const socket = (server: HttpServer) => {
   const io = new SocketIOServer(server, {
     connectionStateRecovery: {},
     cors: {
-      origin: process.env.CLIENT_DOMAIN || 'http://localhost:5173',
+      origin: [
+        process.env.CLIENT_DOMAIN || 'http://localhost:5173',
+        'https://admin.socket.io',
+      ],
+      credentials: true,
     },
   });
 
@@ -21,6 +26,8 @@ const socket = (server: HttpServer) => {
       console.log('input: ', value);
     });
   });
+
+  if (process.env.NODE_ENV === 'development') instrument(io, { auth: false });
 };
 
 export default socket;
