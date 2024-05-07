@@ -1,6 +1,8 @@
-import chatIcon from '../assets/Chat-1.svg'
-import bellIcon from '../assets/Bell.svg'
-import profilePic from '../assets/profileIcon.svg'
+import chatIcon from '../../assets/Chat-1.svg'
+import bellIcon from '../../assets/Bell.svg'
+import profilePic from '../../assets/profileIcon.svg'
+import './Navbar.css'
+
 
 const Navbar = () => {
 

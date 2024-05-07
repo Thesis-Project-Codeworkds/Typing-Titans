@@ -1,13 +1,14 @@
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { toggleSidebar } from '../redux/sidebarSlice';
-import keyboard from '../assets/purpleKeyboard.svg'
-import menuIcon from '../assets/menuIcon.svg'
-import friendsIcon from '../assets/friendsIcon.svg'
-import chartIcon from '../assets/chartIcon.svg'
-import settingsIcon from '../assets/settingsIcon.svg'
-import questionIcon from '../assets/questionIcon.svg'
-import exitIcon from '../assets/exitIcon.svg'
-import dotsMenuIcon from '../assets/dotsMenuIcon.svg'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { toggleSidebar } from '../../redux/sidebarSlice';
+import keyboard from '../../assets/purpleKeyboard.svg'
+import menuIcon from '../../assets/menuIcon.svg'
+import friendsIcon from '../../assets/friendsIcon.svg'
+import chartIcon from '../../assets/chartIcon.svg'
+import settingsIcon from '../../assets/settingsIcon.svg'
+import questionIcon from '../../assets/questionIcon.svg'
+import exitIcon from '../../assets/exitIcon.svg'
+import dotsMenuIcon from '../../assets/dotsMenuIcon.svg'
+import './Sidebar.css'
 
 
 const Sidebar = () => {

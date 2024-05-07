@@ -1,0 +1,14 @@
+.card-container {
+  min-height: 400px;
+  margin: 30px 55px -10px 135px;
+  background-color: var(--main-bg-color);
+  border-radius: 20px;
+  filter: drop-shadow(0px 5px 4px gray)
+}
+
+.card-title {
+  float: left;
+  margin: 50px 100px;
+  color: var(--main-color);
+  font-weight: 600;
+}
