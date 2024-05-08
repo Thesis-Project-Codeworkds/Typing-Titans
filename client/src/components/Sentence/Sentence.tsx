@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './Sentence.css'
 import CharBox from '../CharBox/CharBox';
+import Announcement from '../Announcement';
+import socket from '../../socket';
 
 // Helper function to split sentences by words and group them into rows
 const splitSentenceByWords = (sentence: string, groupSize: number): string[] => {
@@ -91,6 +93,7 @@ const Sentence: React.FC = () => {
     if (isRunning && currentLine < splitLines.length) {
       timer = setInterval(() => setTime((prevTime) => prevTime + 0.01), 10);
     } else if (currentLine === splitLines.length) {
+      socket.emit('enter');
       clearInterval(timer);
       const wordsTyped = totalLetters / 5;
       setSpeed((wordsTyped / time) * 60);
@@ -129,6 +132,7 @@ const Sentence: React.FC = () => {
       <h3 className='stats'>Speed: {(Math.round(speed * 100) / 100).toFixed(2)} w/min</h3>
       <h3 className='stats'>Accuracy: {(Math.round(accuracy * 100) / 100).toFixed(2)} %</h3>
       <button onClick={pickSentence} className='button'>Restart</button>
+      <Announcement />
     </div>
   )
 }
