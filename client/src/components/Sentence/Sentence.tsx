@@ -84,7 +84,6 @@ const Sentence: React.FC = () => {
       throw new Error('Failed to fetch exercises');
     }
     const data = await response.json()
-    console.log('fetchSentence ~ response.json():', data);
     return data[0].quote;
   }
 
