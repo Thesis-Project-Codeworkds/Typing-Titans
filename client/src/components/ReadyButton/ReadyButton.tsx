@@ -14,9 +14,13 @@ const ReadyButton: React.FC = () => {
     setIsReady(toggleReady);
   };
 
+  socket.on('start-competition', () => {
+    setIsReady(false);
+  });
+
   return (
     <>
-      <button className="ready-button" onClick={ handleButtonClick }>
+      <button className={ `ready-button ${isReady && 'ready'}` } onClick={ handleButtonClick }>
         Ready{ isReady ? '!' : '?' }
       </button>
     </>
