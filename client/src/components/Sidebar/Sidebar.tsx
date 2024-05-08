@@ -21,8 +21,8 @@ const Sidebar = () => {
       <div className={`main-side-icon-container ${expanded ? 'expanded' : ''}`}>
         <img src={expanded ? dotsMenuIcon : menuIcon} alt="Menu Icon" onClick={() => dispatch(toggleSidebar())}/>
         <div className='main-side-icon-container-expanded'>
-          <Link to="/multiplayer"><img src={keyboard} alt="Keyboard Icon" /></Link>
-          {expanded && <Link to="/multiplayer"><span>MAIN HUB</span></Link> }
+          <Link to="/competition"><img src={keyboard} alt="Keyboard Icon" /></Link>
+          {expanded && <Link to="/competition"><span>MAIN HUB</span></Link> }
         </div>
         <div className='main-side-icon-container-expanded'>
           <img src={friendsIcon} alt="Friends Icon" />

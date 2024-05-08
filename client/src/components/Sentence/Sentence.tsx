@@ -105,7 +105,7 @@ const Sentence: React.FC = () => {
 
   return (
     <div>
-      <div id='sentenceContainer'>
+      <div className='sentenceContainer'>
         {splitLines.map((line, lineIndex) => (
           <div key={lineIndex} style={{ display: 'flex', flexDirection: 'row', marginBottom: '8px' }}>
             {line.split('').map((char, charIndex) => (
@@ -125,10 +125,10 @@ const Sentence: React.FC = () => {
           </div>
         ))}
       </div>
-      <h1>Time: {(Math.round(time * 100) / 100).toFixed(2)} s</h1>
-      <h1>Speed: {(Math.round(speed * 100) / 100).toFixed(2)} w/min</h1>
-      <h1>Accuracy: {(Math.round(accuracy * 100) / 100).toFixed(2)} %</h1>
-      <button onClick={pickSentence}>Restart</button>
+      <h3 className='stats'>Time: {(Math.round(time * 100) / 100).toFixed(2)} s</h3>
+      <h3 className='stats'>Speed: {(Math.round(speed * 100) / 100).toFixed(2)} w/min</h3>
+      <h3 className='stats'>Accuracy: {(Math.round(accuracy * 100) / 100).toFixed(2)} %</h3>
+      <button onClick={pickSentence} className='button'>Restart</button>
     </div>
   )
 }
