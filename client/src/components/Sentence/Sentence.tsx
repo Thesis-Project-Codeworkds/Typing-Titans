@@ -15,20 +15,8 @@ const splitSentenceByWords = (sentence: string, groupSize: number): string[] => 
 }
 
 const Sentence: React.FC = () => {
-  const sentences = [
-    "here's the initial statement that individuals need to type to engage with the system.",
-    "this sentence serves as the starting point for users' interaction with the platform.",
-    "the first of ten sentences, initiating user input and interaction.",
-    "commencing with the primary sentence, users begin their input process.",
-    "beginning the interaction process, users are prompted to type this sentence.",
-    "users are prompted to type this as the opening sentence to initiate interaction.",
-    "as the starting point, users are instructed to input this initial sentence.",
-    "this serves as the foundational statement for user engagement and input.",
-    "the outset of interaction prompts users to type this initial sentence.",
-    "initiating interaction, users commence by typing this opening statement."
-  ];
 
-  const [sentence, setSentence] = useState(sentences[0]);
+  const [sentence, setSentence] = useState("this is the first sentence that users are going to have to type");
   const [splitLines, setSplitLines] = useState(splitSentenceByWords(sentence, 4));
   const [currentLine, setCurrentLine] = useState(0);
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
