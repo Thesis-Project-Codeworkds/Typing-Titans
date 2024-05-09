@@ -20,7 +20,9 @@ const MultiplayerCard = () => {
         <img src={Player2} alt="Player 2 Icon" />
       </div>
       <ReadyButton />
-      <Countdown />
+      <div className='countdown-container'>
+        <Countdown />
+      </div>
     </div>
   )
 

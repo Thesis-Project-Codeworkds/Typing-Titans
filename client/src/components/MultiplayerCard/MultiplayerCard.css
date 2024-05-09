@@ -52,3 +52,31 @@
 .player-two-container img {
   padding: 30px;
 }
+
+.countdown-container {
+  grid-row: 3 / 3;
+  grid-column: 2 / 3;
+  margin: auto;
+  animation: countdown 4s forwards 1s 1;
+  min-width: 100px;
+  font-size: 96px;
+}
+
+@keyframes countdown {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

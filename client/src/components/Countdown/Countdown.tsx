@@ -1,31 +1,44 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { setCountdown, clearCountdown } from '../../redux/countdownSlice';
 import socket from '../../socket';
 
 const COUNTDOWN: string[] = ['5', '4', '3', '2', '1', 'Go'];
 
 const Countdown: React.FC = () => {
 
-  const [countdown, setCountdown] = useState('');
+  const { value, scale } = useAppSelector(state => state.countdown);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (countdown === 'Go') {
+    if (value === 'Go') {
       setTimeout(() => navigate('/competition'), 1000);
     }
-  }, [ countdown, navigate ]);
+  }, [ value, navigate ]);
 
-  socket.on('countdown', () => {
-    COUNTDOWN.map((count, index) => setTimeout(() => {
-      setCountdown(count);
-    }, 1000 * index));
-  });
+  useEffect(() => {
+    socket.on('countdown', () => {
+      COUNTDOWN.forEach((count, index) => {
+        setTimeout(() => {
+          dispatch(setCountdown(count));
+          setTimeout(() => dispatch(clearCountdown()), 500);
+        }, 1000 * index);
+      });
+    });
 
+    return () => {
+      socket.off('countdown');
+    };
+  }, [ dispatch ]);
 
   return (
     <>
-      <div>{countdown}</div>
+      <div style={{ transform: `scale(${ scale })`, transition: 'transform 500ms ease-in-out' }}>
+        { value }
+      </div>
     </>
   );
 }
