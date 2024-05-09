@@ -36,10 +36,6 @@
   grid-column: 3 / 4;
 }
 
-.input {
-  margin-top: 10px;
-}
-
 .copy-link-title {
   grid-column: 2 / 3;
   grid-row: 2 / 3;

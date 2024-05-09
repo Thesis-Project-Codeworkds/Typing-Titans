@@ -3,6 +3,7 @@ import { Server as SocketIOServer, Socket } from 'socket.io';
 import { Server as HttpServer } from 'http';
 
 let readyPlayers: string[] = [];
+let userNames: any = {};
 
 const socket = (server: HttpServer) => {
 
@@ -26,8 +27,8 @@ const socket = (server: HttpServer) => {
       socket.emit('winner', 'You won!');
     });
 
-    socket.on('input', (value) => {
-      console.log('input: ', value);
+    socket.on('username', (username: string) => {
+      userNames[socket.id] = username;
     });
 
     socket.on('isReady', () => {

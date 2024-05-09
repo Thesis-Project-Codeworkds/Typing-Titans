@@ -3,6 +3,7 @@ import Player1 from '../../assets/p1.svg';
 import Player2 from '../../assets/p2.svg';
 import ReadyButton from '../ReadyButton/ReadyButton';
 import Overlay from '../Overlay/Overlay';
+import UserNameForm from '../UserNameForm';
 
 const MultiplayerCard = () => {
 
@@ -12,7 +13,7 @@ const MultiplayerCard = () => {
       <div className='player-one-container'>
         <h4 className='player-title one'>Player One</h4>
         <img src={Player1} alt="Player 1 Icon" />
-        <input className='player-one-name input' type="text" placeholder='Enter your name...' />
+        <UserNameForm />
       </div>
       <div className='player-two-container'>
         <h4 className='player-title two'>Player Two</h4>
