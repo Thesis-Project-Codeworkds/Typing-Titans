@@ -2,7 +2,7 @@ import './MultiplayerCard.css'
 import Player1 from '../../assets/p1.svg';
 import Player2 from '../../assets/p2.svg';
 import ReadyButton from '../ReadyButton/ReadyButton';
-import Overlay from '../Overlay/Overlay';
+import Countdown from '../Countdown/Countdown';
 import UserNameForm from '../UserNameForm';
 
 const MultiplayerCard = () => {
@@ -20,7 +20,7 @@ const MultiplayerCard = () => {
         <img src={Player2} alt="Player 2 Icon" />
       </div>
       <ReadyButton />
-      <Overlay />
+      <Countdown />
     </div>
   )
 
