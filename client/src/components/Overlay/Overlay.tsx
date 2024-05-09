@@ -1,27 +1,48 @@
 import { useState } from 'react';
-
+import './Overlay.css'
 import socket from '../../socket';
-
-const COUNTDOWN: string[] = ['5', '4', '3', '2', '1', 'Go'];
+import Countdown from '../Countdown/Countdown';
 
 const Overlay: React.FC = () => {
 
   const [overlay, setOverlay] = useState('');
+  const [speed, setSpeed] = useState('');
+  const [time, setTime] = useState(0);
+  const [playAgain, setPlayAgain] = useState(false);
 
-  socket.on('countdown', () => {
-    COUNTDOWN.map((count, index) => setTimeout(() => {
-      setOverlay(count);
-    }, 1000 * index));
+  socket.on('winner', (winner, speed, time) => {
+    setOverlay(winner);
+    setSpeed(speed);
+    setTime(time);
   });
 
-  socket.on('winner', (winner) => {
-    setOverlay(winner);
+  const handleButtonClick = () => {
+    const toggleReady = !playAgain;
+
+    socket.emit('isReady', toggleReady);
+    setPlayAgain(toggleReady);
+  };
+
+  socket.on('start-competition', () => {
+    setPlayAgain(false);
   });
 
   return (
-    <>
-      <div>{overlay}</div>
-    </>
+    <div id='overlayBckgrnd'>
+      <div id='overlayContainer'>
+        <h1>
+          {overlay}
+        </h1>
+        <h2>
+          {time} s <br />
+          {speed}
+        </h2>
+        <button id='overlayButton' onClick={handleButtonClick}>
+          {playAgain ? <>Waiting <br /> for Opponent</> : 'Play Again?'}
+        </button>
+        <Countdown />
+      </div>
+    </div>
   );
 }
 

@@ -16,6 +16,8 @@ const Sentence: React.FC = () => {
   const [mistakes, setMistakes] = useState(0);
   const [wrongInput, setWrongInput] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
+  const [ended, setEnded] = useState(false);
+  console.log('ended:', ended);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -39,13 +41,14 @@ const Sentence: React.FC = () => {
     scrollToPosition(0)
     setWrongInput(false);
     setIsRunning(false);
+    setEnded(false);
 
   };
 
   // Monitor key events
   useEffect(() => {
     const detectKeyDown = (e: KeyboardEvent) => {
-      if (!isRunning) setIsRunning(true);
+      if (!isRunning && !ended) setIsRunning(true);
 
       if (e.key === letters[myIndex]) {
         setWrongInput(false);
@@ -62,7 +65,7 @@ const Sentence: React.FC = () => {
     return () => {
       document.removeEventListener('keydown', detectKeyDown, true);
     };
-  }, [isRunning, letters, myIndex]);
+  }, [ended, isRunning, letters, myIndex]);
 
   // Update timer and calculate speed/accuracy
   useEffect(() => {
@@ -77,8 +80,12 @@ const Sentence: React.FC = () => {
       const wordsTyped = totalLetters / 5;
       const typingSpeed = Math.trunc(60 * (wordsTyped / time));
       setSpeed(typingSpeed);
-      socket.emit('end-competition', typingSpeed);
+      socket.emit('end-competition', typingSpeed, time);
+      socket.on('winner', () => {
+        console.log('hello');
 
+        setEnded(true)
+      })
       setIsRunning(false);
     }
 
@@ -102,7 +109,7 @@ const Sentence: React.FC = () => {
       <h3 className='stats'>Speed: {(Math.round(speed * 100) / 100).toFixed(2)} w/min</h3>
       <h3 className='stats'>Accuracy: {(Math.round(accuracy * 100) / 100).toFixed(2)} %</h3>
       <button onClick={pickSentence} className='button'>Restart</button>
-      <Overlay />
+      {ended && <Overlay />}
     </div>
   )
 }
