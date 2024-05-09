@@ -22,9 +22,6 @@ const Countdown: React.FC = () => {
     }, 1000 * index));
   });
 
-  socket.on('winner', (winner) => {
-    setCountdown(winner);
-  });
 
   return (
     <>
