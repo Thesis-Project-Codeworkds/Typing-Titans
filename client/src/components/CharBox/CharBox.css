@@ -31,6 +31,8 @@
 .charCurrent {
   background-color: #FFDBDB;
   box-shadow: 0 0 20px rgba(0, 255, 178, 0.5);
+  height: 50px;
+  width: 50px;
 }
 
 .charMistake {
