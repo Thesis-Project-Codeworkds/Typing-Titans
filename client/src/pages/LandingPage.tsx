@@ -1,7 +1,6 @@
 import Navbar from '../components/Navbar/Navbar'
 import Sidebar from '../components/Sidebar/Sidebar'
 import MainCard from '../components/MainCard/MainCard'
-import Form from '../components/Form'
 import CompeteCardSVG from '../assets/CompeteCard.svg'
 
 const LandingPage = () => {
@@ -13,7 +12,6 @@ const LandingPage = () => {
         <MainCard title="Training" />
         <MainCard title="Competitive" imgSrc={CompeteCardSVG}/>
         <MainCard title="Daily Challenges" />
-        <Form />
       </div>
     </div>
   );
