@@ -88,10 +88,13 @@ const Sentence: React.FC = () => {
     if (isRunning && myIndex < totalLetters) {
       timer = setInterval(() => setTime((prevTime) => prevTime + 0.01), 10);
     } else if (myIndex === totalLetters) {
-      socket.emit('enter');
       clearInterval(timer);
+
       const wordsTyped = totalLetters / 5;
-      setSpeed((wordsTyped / time) * 60);
+      const typingSpeed = Math.trunc(60 * (wordsTyped / time));
+      setSpeed(typingSpeed);
+      socket.emit('end-competition', typingSpeed);
+
       setIsRunning(false);
     }
 
