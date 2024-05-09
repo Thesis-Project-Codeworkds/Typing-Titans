@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './Sentence.css'
 import CharBox from '../CharBox/CharBox';
-import Announcement from '../Announcement';
 import socket from '../../socket';
+import Overlay from '../Overlay/Overlay';
 
 const Sentence: React.FC = () => {
 
@@ -115,7 +115,7 @@ const Sentence: React.FC = () => {
       <h3 className='stats'>Speed: {(Math.round(speed * 100) / 100).toFixed(2)} w/min</h3>
       <h3 className='stats'>Accuracy: {(Math.round(accuracy * 100) / 100).toFixed(2)} %</h3>
       <button onClick={pickSentence} className='button'>Restart</button>
-      <Announcement />
+      <Overlay />
     </div>
   )
 }
