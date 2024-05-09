@@ -1,0 +1,19 @@
+const NINJA_QUOTES_API = 'https://api.api-ninjas.com/v1/quotes';
+
+export const fetchSentence = async (): Promise<string> => {
+
+  const response = await fetch(NINJA_QUOTES_API, {
+    method: 'GET',
+    headers: {
+      'X-Api-Key': import.meta.env.VITE_API_KEY,
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch exercises');
+  }
+
+  const data = await response.json();
+
+  return data[0].quote;
+}

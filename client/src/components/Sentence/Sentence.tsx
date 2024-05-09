@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
+
 import './Sentence.css'
 import CharBox from '../CharBox/CharBox';
 import socket from '../../socket';
 import Overlay from '../Overlay/Overlay';
+import { fetchSentence } from '../../services/ninja-api-service';
 
 const Sentence: React.FC = () => {
 
@@ -42,21 +44,6 @@ const Sentence: React.FC = () => {
     setIsRunning(false);
 
   };
-
-
-  const fetchSentence = async () => {
-    const response = await fetch('https://api.api-ninjas.com/v1/quotes', {
-      method: 'GET',
-      headers: {
-        'X-Api-Key': import.meta.env.VITE_API_KEY,
-      }
-    });
-    if (!response.ok) {
-      throw new Error('Failed to fetch exercises');
-    }
-    const data = await response.json()
-    return data[0].quote;
-  }
 
   // Monitor key events
   useEffect(() => {
