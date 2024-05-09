@@ -17,3 +17,14 @@ export const fetchSentence = async (): Promise<string> => {
 
   return data[0].quote;
 }
+
+export const fetchShortSentence = async (): Promise<string> => {
+
+  let sentence = await fetchSentence();
+
+  while (sentence.length > 100) {
+    sentence = await fetchSentence();
+  }
+
+  return sentence;
+}

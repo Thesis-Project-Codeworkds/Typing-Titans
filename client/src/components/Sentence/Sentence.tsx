@@ -4,7 +4,7 @@ import './Sentence.css'
 import CharBox from '../CharBox/CharBox';
 import socket from '../../socket';
 import Overlay from '../Overlay/Overlay';
-import { fetchSentence } from '../../services/ninja-api-service';
+import { fetchShortSentence } from '../../services/ninja-api-service';
 
 const Sentence: React.FC = () => {
 
@@ -28,10 +28,7 @@ const Sentence: React.FC = () => {
   // Select a random sentence and reset the states
   const pickSentence = async () => {
 
-    let fetchedSentence = await fetchSentence();
-    while (fetchedSentence.length > 100) {
-      fetchedSentence = await fetchSentence();
-    }
+    const fetchedSentence = await fetchShortSentence();
 
     setSentence(fetchedSentence);
     setLetters(fetchedSentence.split(''));
