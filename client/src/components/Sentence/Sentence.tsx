@@ -81,13 +81,11 @@ const Sentence: React.FC = () => {
       const typingSpeed = Math.trunc(60 * (wordsTyped / time));
       setSpeed(typingSpeed);
       socket.emit('end-competition', typingSpeed, time);
-      socket.on('winner', () => {
-        console.log('hello');
-
-        setEnded(true)
-      })
       setIsRunning(false);
     }
+    socket.on('winner', () => {
+      setEnded(true)
+    })
 
     return () => clearInterval(timer);
   }, [isRunning, time, letters.length, myIndex]);

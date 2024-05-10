@@ -34,7 +34,7 @@ const Overlay: React.FC = () => {
           {overlay}
         </h1>
         <h2>
-          {time} s <br />
+          {time.toFixed(2)} s <br />
           {speed}
         </h2>
         <button id='overlayButton' onClick={handleButtonClick}>
