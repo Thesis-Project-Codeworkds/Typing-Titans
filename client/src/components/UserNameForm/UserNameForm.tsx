@@ -24,7 +24,7 @@ const UserNameForm = () => {
 
   return (
     <>
-      <form onSubmit={ handleSubmit }>
+      <form onSubmit={ handleSubmit } onBlur={ handleSubmit }>
         { username === ''
           ? <input onChange={ handleInputChange } value={ value } type='text' placeholder='Enter your name...' autoFocus />
           : <div> { username } </div>
