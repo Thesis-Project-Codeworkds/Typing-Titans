@@ -3,7 +3,7 @@ import { useState } from 'react';
 import socket from '../../socket';
 import './ReadyButton.css';
 
-const ReadyButton: React.FC = () => {
+const ReadyButton = () => {
 
   const [ isReady, setIsReady ] = useState(false);
 

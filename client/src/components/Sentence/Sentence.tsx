@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import './Sentence.css'
 import CharBox from '../CharBox/CharBox';
@@ -6,7 +6,7 @@ import socket from '../../socket';
 import Overlay from '../Overlay/Overlay';
 import { fetchShortSentence } from '../../services/ninja-api-service';
 
-const Sentence: React.FC = () => {
+const Sentence = () => {
 
   const [sentence, setSentence] = useState("this is the first sentence that users are going to have to type");
   const [letters, setLetters] = useState(sentence.split(''));
@@ -17,7 +17,6 @@ const Sentence: React.FC = () => {
   const [wrongInput, setWrongInput] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
   const [ended, setEnded] = useState(false);
-  console.log('ended:', ended);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 

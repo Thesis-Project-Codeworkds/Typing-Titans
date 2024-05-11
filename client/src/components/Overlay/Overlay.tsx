@@ -3,7 +3,7 @@ import './Overlay.css'
 import socket from '../../socket';
 import Countdown from '../Countdown/Countdown';
 
-const Overlay: React.FC = () => {
+const Overlay = () => {
 
   const [overlay, setOverlay] = useState('');
   const [speed, setSpeed] = useState('');

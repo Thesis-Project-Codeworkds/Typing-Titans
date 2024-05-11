@@ -7,7 +7,7 @@ import socket from '../../socket';
 
 const COUNTDOWN: string[] = ['5', '4', '3', '2', '1', 'Go'];
 
-const Countdown: React.FC = () => {
+const Countdown = () => {
 
   const { value, scale } = useAppSelector(state => state.countdown);
   const dispatch = useAppDispatch();
@@ -32,12 +32,12 @@ const Countdown: React.FC = () => {
     return () => {
       socket.off('countdown');
     };
-  }, [ dispatch ]);
+  }, [dispatch]);
 
   return (
     <>
-      <div style={{ transform: `scale(${ scale })`, transition: 'transform 500ms ease-in-out' }}>
-        { value }
+      <div style={{ transform: `scale(${scale})`, transition: 'transform 500ms ease-in-out' }}>
+        {value}
       </div>
     </>
   );

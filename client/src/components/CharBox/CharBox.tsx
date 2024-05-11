@@ -1,4 +1,3 @@
-import React from 'react';
 import './CharBox.css';
 
 interface CharBoxProps {
@@ -8,7 +7,7 @@ interface CharBoxProps {
   mistake: boolean;
 }
 
-const CharBox: React.FC<CharBoxProps> = ({ char, typed, current, mistake }) => {
+const CharBox = ({ char, typed, current, mistake }: CharBoxProps) => {
   const baseClass = 'charDefault';
   const spaceClass = char === ' ' ? 'charSpace' : '';
   const currentClass = current ? 'charCurrent' : '';
