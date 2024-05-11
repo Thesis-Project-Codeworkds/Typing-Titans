@@ -1,7 +1,7 @@
 .side-bar-container.expanded {
   display: flex;
   align-items: flex-start;
-  width: 200px; 
+  width: 200px;
   transition: width 0.3s ease;
   padding-left: 20px;
   color: var(--main-color);
@@ -60,6 +60,6 @@
   align-items: center;
 }
 
-.main-side-icon-container-expanded span{
-padding-left: 10px;
+.main-side-icon-container-expanded span {
+  padding-left: 10px;
 }
