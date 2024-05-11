@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 
-import socket from '../socket';
+import socket from '../../socket';
 import './UserNameForm.css';
 
 const UserNameForm = () => {

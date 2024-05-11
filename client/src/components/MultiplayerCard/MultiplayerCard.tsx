@@ -3,7 +3,7 @@ import Player1 from '../../assets/p1.svg';
 import Player2 from '../../assets/p2.svg';
 import ReadyButton from '../ReadyButton/ReadyButton';
 import Countdown from '../Countdown/Countdown';
-import UserNameForm from '../UserNameForm';
+import UserNameForm from '../UserNameForm/UserNameForm';
 
 const MultiplayerCard = () => {
 
