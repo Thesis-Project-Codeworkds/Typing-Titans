@@ -1,0 +1,41 @@
+.charDefault {
+  background-color: #E7DBFF;
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  margin: 5px;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #000;
+  box-shadow: 2px 2px 2px 1px var(--secondary-bg-color);
+}
+
+.charSpace {
+  border: 2px solid #E7DBFF;
+  background: none;
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  margin: 5px;
+  flex: 0 0 auto;
+}
+
+.charTyped {
+  background-color: #BFA1FF;
+}
+
+.charCurrent {
+  background-color: #FFDBDB;
+  box-shadow: 0 0 20px rgba(0, 255, 178, 0.5);
+  height: 50px;
+  width: 50px;
+}
+
+.charMistake {
+  background-color: #ff4444;
+  box-shadow: 0 0 20px rgba(0, 255, 178, 0.5);
+}

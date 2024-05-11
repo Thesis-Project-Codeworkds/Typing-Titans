@@ -1,32 +1,37 @@
 import { FormEvent, useState } from 'react';
 
 import socket from '../socket';
+import './UserNameForm.css';
 
-const Form: React.FC = () => {
+const UserNameForm = () => {
 
   const [ value, setValue ] = useState('');
+  const [ username, setUsername ] = useState('');
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
+    socket.emit('username', value);
+    setUsername(value);
     setValue('');
-    socket.emit('enter');
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value;
 
     setValue(input);
-    socket.emit('input', input);
   };
 
   return (
     <>
       <form onSubmit={ handleSubmit }>
-        <input onChange={ handleInputChange } value={ value } />
+        { username === ''
+          ? <input onChange={ handleInputChange } value={ value } type='text' placeholder='Enter your name...' autoFocus />
+          : <div> { username } </div>
+        }
       </form>
     </>
   );
 }
 
-export default Form;
+export default UserNameForm;

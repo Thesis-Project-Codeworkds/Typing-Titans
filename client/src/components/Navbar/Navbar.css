@@ -1,0 +1,27 @@
+.nav-container {
+  display: flex;
+  min-height: 80px;
+  background-color: var(--main-bg-color);
+  color: var(--main-color);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 25px;
+}
+
+.icon-container {
+  display: flex;
+}
+
+.icon-container img {
+  padding: 0px 20px;
+}
+
+.icon-container img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--main-color);
+}
