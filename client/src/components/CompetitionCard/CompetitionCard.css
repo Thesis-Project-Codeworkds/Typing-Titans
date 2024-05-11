@@ -1,0 +1,23 @@
+.competition-card-container {
+  display: grid;
+  min-height: 800px;
+  margin: 30px 125px -10px 205px;
+  background-color: var(--main-bg-color);
+  border-radius: 20px;
+  filter: drop-shadow(0px 5px 4px gray);
+  grid-template-rows: 2fr 4fr 4fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  color: var(--main-color);
+}
+
+.sentence-div {
+  align-content: center;
+  grid-column: 1 / 4;
+  grid-row: 2 / 4;
+}
+
+.competition-title {
+  grid-column: 2 / 3;
+  align-self: center;
+  font-size: 48px;
+}
