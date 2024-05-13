@@ -5,7 +5,7 @@ export interface SentenceState {
 }
 
 const initialState: SentenceState = {
-  sentence: 'this is the first sentence that users are going to have to type',
+  sentence: 'You can\'t blame gravity for falling in love.'
 };
 
 export const sentence = createSlice({
