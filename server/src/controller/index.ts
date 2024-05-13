@@ -18,6 +18,20 @@ const getUsers = async (req: Request, res: Response) => {
   res.json(users)
 }
 
+const getUsersWithDetails = async (req: Request, res: Response) => {
+  try {
+    const users = await prisma.user.findMany({
+      include: {
+        progress: true,
+        friends: true
+      }
+    });
+    res.json(users)
+  } catch (error) {
+    console.error('Error fetching users:', error);
+  }
+}
+
 const newUser = async (req: Request, res: Response) => {
   const { username, email, password } = req.body
 
@@ -31,4 +45,4 @@ const newUser = async (req: Request, res: Response) => {
   res.json(user)
 }
 
-export { root, getUsers, newUser };
+export { root, getUsers, newUser, getUsersWithDetails };
