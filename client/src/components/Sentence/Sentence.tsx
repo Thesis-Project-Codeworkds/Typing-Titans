@@ -78,6 +78,8 @@ const Sentence = () => {
     const typingSpeed = 60 * (wordsTyped / time);
 
     if (isRunning && myIndex < totalLetters) {
+      setSpeed(typingSpeed);
+
       timer = setInterval(() => setTime((prevTime) => prevTime + 0.01), 10);
     } else if (myIndex === totalLetters) {
       clearInterval(timer);
@@ -112,9 +114,9 @@ const Sentence = () => {
           ))}
         </div>
       </div>
-      <h3 className='stats'>Time: {(Math.round(time * 100) / 100).toFixed(2)} s</h3>
-      <h3 className='stats'>Speed: {(Math.round(speed * 100) / 100).toFixed(2)} w/min</h3>
-      <h3 className='stats'>Accuracy: {(Math.round(accuracy * 100) / 100).toFixed(2)} %</h3>
+      <h3 className='stats'>Time: { (Math.round(time * 100) / 100).toFixed(1) } s</h3>
+      <h3 className='stats'>Speed: { (Math.round(speed * 100) / 100).toFixed(0) } words/min</h3>
+      <h3 className='stats'>Accuracy: { (Math.round(accuracy * 100) / 100).toFixed(1) } %</h3>
       <button onClick={pickSentence} className='button'>Restart</button>
       {ended && <Overlay />}
     </div>
