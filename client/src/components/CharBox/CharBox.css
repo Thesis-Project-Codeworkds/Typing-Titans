@@ -36,6 +36,6 @@
 }
 
 .charMistake {
-  background-color: #ff4444;
+  background-color: var(--bg-red);
   box-shadow: 0 0 20px rgba(0, 255, 178, 0.5);
 }
