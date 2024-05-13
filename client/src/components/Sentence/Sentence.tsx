@@ -6,6 +6,10 @@ import socket from '../../socket';
 import Overlay from '../Overlay/Overlay';
 import { useAppSelector } from '../../redux/hooks';
 
+const calculateAccuracy = (totalLetters: number, mistakes: number) => {
+  return totalLetters > 0 ? (100 - ((mistakes / totalLetters) * 100)) : 100;
+}
+
 const Sentence = () => {
 
   const fetchedSentence = useAppSelector((state) => state.sentence.sentence);
@@ -70,24 +74,26 @@ const Sentence = () => {
   useEffect(() => {
     let timer: number | undefined;
     const totalLetters = letters.length;
+    const wordsTyped = totalLetters / 5;
+    const typingSpeed = 60 * (wordsTyped / time);
 
     if (isRunning && myIndex < totalLetters) {
       timer = setInterval(() => setTime((prevTime) => prevTime + 0.01), 10);
     } else if (myIndex === totalLetters) {
       clearInterval(timer);
-
-      const wordsTyped = totalLetters / 5;
-      const typingSpeed = Math.trunc(60 * (wordsTyped / time));
+      const accuracy = calculateAccuracy(totalLetters, mistakes);
       setSpeed(typingSpeed);
-      socket.emit('end-competition', typingSpeed, time);
+
+      socket.emit('end-competition', time, typingSpeed, accuracy);
       setIsRunning(false);
     }
+
     socket.on('winner', () => {
       setEnded(true)
     })
 
     return () => clearInterval(timer);
-  }, [isRunning, time, letters.length, myIndex]);
+  }, [ isRunning, time, letters.length, myIndex, mistakes ]);
 
   socket.on('start-competition', () => {
     setEnded(false);
@@ -95,8 +101,7 @@ const Sentence = () => {
   });
 
   const totalLetters = letters.length;
-  const accuracy = totalLetters > 0 ? (100 - ((mistakes / totalLetters) * 100)) : 100;
-
+  const accuracy = calculateAccuracy(totalLetters, mistakes);
 
   return (
     <div>

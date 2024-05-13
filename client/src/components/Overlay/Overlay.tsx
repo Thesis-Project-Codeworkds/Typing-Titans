@@ -1,19 +1,23 @@
 import { useState } from 'react';
+
 import './Overlay.css'
 import socket from '../../socket';
 import Countdown from '../Countdown/Countdown';
 
 const Overlay = () => {
 
-  const [overlay, setOverlay] = useState('');
-  const [speed, setSpeed] = useState('');
-  const [time, setTime] = useState(0);
-  const [playAgain, setPlayAgain] = useState(false);
+  const [ overlay, setOverlay ] = useState('');
+  const [ time, setTime ] = useState(0);
+  const [ speed, setSpeed ] = useState(0);
+  const [ accuracy, setAccuracy ] = useState(0);
+  const [ playAgain, setPlayAgain ] = useState(false);
+  const [ countdown, setCountdown ] = useState(false);
 
-  socket.on('winner', (winner, speed, time) => {
+  socket.on('winner', (winner: string, time: number, speed: number, accuracy: number) => {
     setOverlay(winner);
-    setSpeed(speed);
     setTime(time);
+    setSpeed(speed);
+    setAccuracy(accuracy);
   });
 
   const handleButtonClick = () => {

@@ -23,15 +23,14 @@ const socket = (server: HttpServer) => {
   io.on('connection', (socket: Socket) => {
     socket.broadcast.emit('connected');
 
-    socket.on('end-competition', (typingSpeed, time) => {
-      const speed = `Typing speed: ${ typingSpeed } words per minute 🐇`;
+    socket.on('end-competition', (time: number, speed: number, accuracy: number) => {
 
       socket.broadcast.emit('winner', `${ userNames[socket.id]
         ? userNames[socket.id]
         : 'Another player'
-      } has won!`, speed, time);
+      } has won!`, time, speed, accuracy);
 
-      socket.emit('winner', `You won!`, speed, time);
+      socket.emit('winner', `You won!`, time, speed, accuracy);
     });
 
     socket.on('username', (username: string) => {
