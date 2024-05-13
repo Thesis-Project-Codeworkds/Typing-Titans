@@ -51,4 +51,8 @@
   transform: scale(1.01);
 }
 
+.lesson div {
+  border-bottom: none;
+  padding: 0px;
+}
 
