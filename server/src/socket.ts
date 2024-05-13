@@ -2,6 +2,8 @@ import { instrument } from '@socket.io/admin-ui';
 import { Server as SocketIOServer, Socket } from 'socket.io';
 import { Server as HttpServer } from 'http';
 
+import { fetchShortSentence } from './services/api-service';
+
 let readyPlayers: string[] = [];
 let userNames: any = {};
 
@@ -36,13 +38,14 @@ const socket = (server: HttpServer) => {
       userNames[socket.id] = username;
     });
 
-    socket.on('isReady', () => {
+    socket.on('isReady', async () => {
       readyPlayers = readyPlayers.includes(socket.id)
         ? readyPlayers.filter(id => id != socket.id)
         : [ ...readyPlayers, socket.id ];
 
       if (readyPlayers.length > 1) {
         io.emit('countdown');
+        io.emit('sentence', await fetchShortSentence());
 
         setTimeout(() => {
           readyPlayers = [];

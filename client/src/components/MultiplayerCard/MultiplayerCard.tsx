@@ -5,7 +5,17 @@ import ReadyButton from '../ReadyButton/ReadyButton';
 import Countdown from '../Countdown/Countdown';
 import UserNameForm from '../UserNameForm/UserNameForm';
 
+import socket from '../../socket';
+import { useAppDispatch } from '../../redux/hooks';
+import { setSentence } from '../../redux/sentence';
+
 const MultiplayerCard = () => {
+
+  const dispatch = useAppDispatch();
+
+  socket.on('sentence', (sentence: string) => {
+    dispatch(setSentence(sentence));
+  });
 
   return (
     <div className="multiplayer-card-container">
