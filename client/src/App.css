@@ -13,6 +13,7 @@
   --main-bg-color: #FFFFFF;
   --secondary-bg-color: #F6F6F6;
   --bg-green: #04e042;
+  --bg-red: #ff4470;
   text-align: center;
   background-color: var(--secondary-bg-color);
   font-family: sans-serif;
