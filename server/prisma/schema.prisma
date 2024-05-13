@@ -32,3 +32,10 @@ model User {
   progress  Progress[]
   friendOf  User[]    @relation("UserToFriends")
 }
+
+model Shortcut {
+  id        Int       @id @default(autoincrement())
+  name      String  
+  windows   String[]
+  mac       String[]  
+}

@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import fs from 'fs';
 
 const prisma = new PrismaClient();
 
@@ -54,15 +55,16 @@ async function main() {
   ];
 
   const createdUsers = [];
+  console.log('seeding users');
   for (const u of userData) {
     const user = await prisma.user.create({
       data: u,
     });
     createdUsers.push(user);
-    console.log(`Created user with id: ${user.id}`);
   }
 
   for (const user of createdUsers) {
+    console.log('making friends');
     await prisma.user.update({
       where: { id: user.id },
       data: {
@@ -72,6 +74,19 @@ async function main() {
             .map((friend) => ({ id: friend.id })),
         },
       },
+    });
+  }
+
+  const data = JSON.parse(fs.readFileSync('shortcuts.json', 'utf-8'));
+  console.log('seeding shortcuts');
+
+  for (let item of data) {
+    await prisma.shortcut.create({
+      data: {
+        name: item.name,
+        windows: item.windows,
+        mac: item.mac
+      }
     });
   }
 

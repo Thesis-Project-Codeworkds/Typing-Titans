@@ -1,0 +1,162 @@
+[
+    {
+        "name": "switch windows",
+        "windows": ["alt", "tab"],
+        "mac": ["command", "tab"]
+    },
+    {
+        "name": "file menu",
+        "windows": ["alt", "f"],
+        "mac": ["command", "f"]
+    },
+    {
+        "name": "previous history",
+        "windows": ["alt", "left arrow"],
+        "mac": ["command", "left arrow"]
+    },
+    {
+        "name": "forward in browser",
+        "windows": ["alt", "right arrow"],
+        "mac": ["command", "right arrow"]
+    },
+    {
+        "name": "show properties",
+        "windows": ["alt", "enter"],
+        "mac": ["command", "i"]
+    },
+    {
+        "name": "select all",
+        "windows": ["ctrl", "a"],
+        "mac": ["command", "a"]
+    },
+    {
+        "name": "cut",
+        "windows": ["ctrl", "x"],
+        "mac": ["command", "x"]
+    },
+    {
+        "name": "delete",
+        "windows": ["ctrl", "del"],
+        "mac": ["command", "delete"]
+    },
+    {
+        "name": "copy",
+        "windows": ["ctrl", "c"],
+        "mac": ["command", "c"]
+    },
+    {
+        "name": "paste",
+        "windows": ["ctrl", "v"],
+        "mac": ["command", "v"]
+    },
+    {
+        "name": "save",
+        "windows": ["ctrl", "s"],
+        "mac": ["command", "s"]
+    },
+    {
+        "name": "undo",
+        "windows": ["ctrl", "z"],
+        "mac": ["command", "z"]
+    },
+    {
+        "name": "task manager",
+        "windows": ["ctrl", "alt", "del"],
+        "mac": ["command", "option", "esc"]
+    },
+    {
+        "name": "new window/document",
+        "windows": ["ctrl", "n"],
+        "mac": ["command", "n"]
+    },
+    {
+        "name": "history",
+        "windows": ["ctrl", "h"],
+        "mac": ["command", "y"]
+    },
+    {
+        "name": "downloads",
+        "windows": ["ctrl", "j"],
+        "mac": ["command", "option", "l"]
+    },
+    {
+        "name": "find",
+        "windows": ["ctrl", "f"],
+        "mac": ["command", "f"]
+    },
+    {
+        "name": "print",
+        "windows": ["ctrl", "p"],
+        "mac": ["command", "p"]
+    },
+    {
+        "name": "start menu",
+        "windows": ["ctrl", "esc"],
+        "mac": ["command", "option", "esc"]
+    },
+    {
+        "name": "zoom in",
+        "windows": ["ctrl", "+"],
+        "mac": ["command", "+"]
+    },
+    {
+        "name": "zoom out",
+        "windows": ["ctrl", "-"],
+        "mac": ["command", "-"]
+    },
+    {
+        "name": "close tab",
+        "windows": ["ctrl", "w"],
+        "mac": ["command", "w"]
+    },
+    {
+        "name": "new tab",
+        "windows": ["ctrl", "t"],
+        "mac": ["command", "t"]
+    },
+    {
+        "name": "permanent delete",
+        "windows": ["shift", "delete"],
+        "mac": ["command", "delete"]
+    },
+    {
+        "name": "redo",
+        "windows": ["ctrl", "y"],
+        "mac": ["command", "shift", "z"]
+    },
+    {
+        "name": "insert hyperlink",
+        "windows": ["ctrl", "k"],
+        "mac": ["command", "k"]
+    },
+    {
+        "name": "lock computer",
+        "windows": ["windows", "l"],
+        "mac": ["command", "control", "q"]
+    },
+    {
+        "name": "power user menu",
+        "windows": ["windows", "x"],
+        "mac": ["control", "f3"]
+    },
+    {
+        "name": "minimize window",
+        "windows": ["windows", "down arrow"],
+        "mac": ["command", "m"]
+    },
+    {
+        "name": "maximize window",
+        "windows": ["windows", "up arrow"],
+        "mac": ["command", "option", "m"]
+    },
+    {
+        "name": "move left word",
+        "windows": ["ctrl", "left arrow"],
+        "mac": ["option", "left arrow"]
+    },
+    {
+        "name": "move right word",
+        "windows": ["ctrl", "right arrow"],
+        "mac": ["option", "right arrow"]
+    }
+]
