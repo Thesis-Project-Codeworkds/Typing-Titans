@@ -1,4 +1,4 @@
-#overlayBckgrnd {
+#overlay-background {
   position: fixed;
   top: 0;
   background-color: rgba(0, 0, 0, .75);
@@ -11,7 +11,7 @@
   z-index: 1;
 }
 
-#overlayContainer {
+#overlay-container {
   color: white;
   background-color: var(--main-color);
   width: 60%;
@@ -19,7 +19,7 @@
   border-radius: 1vh;
 }
 
-#overlayContainer h1 {
+#overlay-container h1 {
   margin-bottom: 2vh;
 }
 

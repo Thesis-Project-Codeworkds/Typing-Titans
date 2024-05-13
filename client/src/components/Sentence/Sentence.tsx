@@ -107,8 +107,8 @@ const Sentence = () => {
 
   return (
     <div>
-      <div className='sentenceBox' ref={scrollContainerRef}>
-        <div className='sentenceContainer'>
+      <div className='sentence-box' ref={ scrollContainerRef }>
+        <div className='sentence-container'>
           {letters.map((char, index) => (
             <CharBox key={index} char={char} typed={index < myIndex} current={index === myIndex} mistake={wrongInput && index === myIndex} />
           ))}

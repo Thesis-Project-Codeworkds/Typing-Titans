@@ -1,4 +1,4 @@
-.charDefault {
+.char-default {
   background-color: #E7DBFF;
   height: 40px;
   width: 40px;
@@ -14,7 +14,7 @@
   box-shadow: 2px 2px 2px 1px var(--secondary-bg-color);
 }
 
-.charSpace {
+.char-space {
   border: 2px solid #E7DBFF;
   background: none;
   height: 40px;
@@ -24,18 +24,18 @@
   flex: 0 0 auto;
 }
 
-.charTyped {
+.char-typed {
   background-color: #BFA1FF;
 }
 
-.charCurrent {
+.char-current {
   background-color: #FFDBDB;
   box-shadow: 0 0 20px rgba(0, 255, 178, 0.5);
   height: 50px;
   width: 50px;
 }
 
-.charMistake {
+.char-mistake {
   background-color: var(--bg-red);
   box-shadow: 0 0 20px rgba(0, 255, 178, 0.5);
 }

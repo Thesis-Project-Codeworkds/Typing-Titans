@@ -36,8 +36,8 @@ const Overlay = () => {
   });
 
   return (
-    <div id='overlayBckgrnd'>
-      <div id='overlayContainer'>
+    <div id='overlay-background'>
+      <div id='overlay-container'>
         <h1>{ overlay }</h1>
 
         <h2>

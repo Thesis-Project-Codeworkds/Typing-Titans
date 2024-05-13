@@ -1,4 +1,4 @@
-.sentenceBox {
+.sentence-box {
   padding: 40px;
   margin: 0 20px;
   margin-bottom: 90px;
@@ -9,11 +9,11 @@
   overflow-x: scroll;
 }
 
-.sentenceBox::-webkit-scrollbar {
+.sentence-box::-webkit-scrollbar {
   display: none;
 }
 
-.sentenceContainer {
+.sentence-container {
   display: flex;
   align-items: center;
   justify-content: start;
