@@ -31,20 +31,33 @@ const Overlay = () => {
     setPlayAgain(false);
   });
 
+  socket.on('countdown', () => {
+    setCountdown(true);
+  });
+
   return (
     <div id='overlayBckgrnd'>
       <div id='overlayContainer'>
-        <h1>
-          {overlay}
-        </h1>
+        <h1>{ overlay }</h1>
+
         <h2>
-          {time.toFixed(2)} s <br />
-          {speed}
+          <div className='metrics'>
+            { time.toFixed(2) } s <br />
+            { speed.toFixed(2) } words per minute 🐇 <br />
+            { accuracy.toFixed(2) } % accuracy <br />
+          </div>
         </h2>
-        <button id='overlayButton' onClick={handleButtonClick}>
-          {playAgain ? <>Waiting <br /> for Opponent</> : 'Play Again?'}
+
+        <div className='overlay-countdown'>
+          <Countdown />
+        </div>
+
+        <button
+          onClick={ handleButtonClick }
+          className={ `overlay-button ${ playAgain && 'ready' } ${ countdown && 'hidden' }` }
+        >
+          { playAgain ? 'Waiting for Opponent' : 'Play Again?' }
         </button>
-        <Countdown />
       </div>
     </div>
   );
