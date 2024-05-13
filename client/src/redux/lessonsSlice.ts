@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import LessonOne from '../components/Lessons/LessonOne';
-import LessonTwo from '../components/Lessons/LessonTwo';
+import LessonOne from '../components/Lessons/LessonOne/LessonOne';
+import LessonTwo from '../components/Lessons/LessonTwo/LessonTwo';
 
 interface Lesson {
   name: string;
