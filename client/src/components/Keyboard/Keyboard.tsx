@@ -2,7 +2,8 @@ import { useEffect, useCallback } from 'react';
 import './Keyboard.css';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { keyPressed, keyReleased } from '../../redux/KeyboardSlice';
-import { setActiveKey } from '../../redux/lessonGameSlice';
+// import { setActiveKey } from '../../redux/lessonGameSlice';
+import { advanceKey } from '../../redux/lessonGameSlice';
 
 interface KeyStyles {
   [key: string]: string;
@@ -21,7 +22,7 @@ const Keyboard = ({ className = '' }: { className: string }) => {
     if (action === 'down' && !isActive) {
       dispatch(keyPressed(lowerKey));
       if (isCorrectKey) {
-        dispatch(setActiveKey(null));
+        dispatch(advanceKey());
       }
     } else if (action === 'up' && isActive) {
       dispatch(keyReleased(lowerKey));

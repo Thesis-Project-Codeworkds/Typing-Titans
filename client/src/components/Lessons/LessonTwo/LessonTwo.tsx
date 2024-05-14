@@ -1,51 +1,80 @@
-import './LessonTwo.css'
-import Hands from '../../../assets/Hands.svg'
-import Keyboard from '../../Keyboard/Keyboard'
-import { useDispatch } from 'react-redux';
-import { setActiveKey, startGame } from '../../../redux/lessonGameSlice';
-
+import "./LessonTwo.css";
+import Hands from "../../../assets/Hands.svg";
+import Keyboard from "../../Keyboard/Keyboard";
+import { useDispatch } from "react-redux";
+import {
+	startGame,
+	resetGame,
+	setKeysSequence,
+} from "../../../redux/lessonGameSlice";
 
 const LessonTwo = () => {
+	const dispatch = useDispatch();
 
-  const dispatch = useDispatch();
+	const handleStartGame = () => {
+		dispatch(resetGame());
+		dispatch(startGame());
+		const keys = ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'"];
+		// const fixedKeys = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'];
 
-  const handleStartGame = () => {
-    dispatch(startGame());
-    const keys = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'ENTER'];
-    const randomKey = keys[Math.floor(Math.random() * keys.length)];
-    dispatch(setActiveKey(randomKey));
-  };
+		const randomKeys = Array.from(
+			{ length: 10 },
+			() => keys[Math.floor(Math.random() * keys.length)]
+		);
+		console.log("Generated random keys:", randomKeys);
+		dispatch(setKeysSequence(randomKeys));
+		// dispatch(setKeysSequence(fixedKeys));
+	};
 
-  return (
-    <>
-      <div className="lesson-two lessons-card-container">
-        <h2 className='lesson-title'>Basic Position in Ten Finger Typing</h2>
-        <div className='keyboard-container'>
-          <Keyboard className="custom-keyboard-style-les2"/>
-        </div>
-        <div className='text-container'>
-          <h4>Basic Position in Ten Finger Typing</h4>
-          <ul>
-            <li>Feel the bumps on the F and J keys.</li>
-            <li>The bumps are there to guide yhou to position yhour fingers on the keyboard without looking.</li>
-            <li>Place your index fingers on the F and J keys. The other fingers should be palced on the keyboard as shown in the figure.</li>
-            <li>Your fingers should lightly touch the keys.</li>
-            <li>This is the "Basic Position". When not typing or after pressing a key your fingers should always return to the basic position.</li>
-            <li>Ten finger touch typing can be summarized as: basic position and then pressa key, then basic porision again.</li>
-          </ul>
-          <div className='button-container'>
-            <button>Previous Chapter</button>
-            <button>Next Chapter</button>
-          </div>
-          <button onClick={handleStartGame}>Start Lesson</button>
-        </div>
-        <div className='hand-container'>
-          <img src={Hands} alt="" />
-        </div>
-      </div>
-    </>
+	return (
+		<>
+			<div className="lesson-two lessons-card-container">
+				<h2 className="lesson-title">Basic Position in Ten Finger Typing</h2>
+				<div className="keyboard-container">
+					<Keyboard className="custom-keyboard-style-les2" />
+				</div>
+				<div className="text-container">
+					<h4>Finger Placement</h4>
+					<h5>Feel the Bumps:</h5>
+					<p>
+						Locate the bumps on the F and J keys with your index fingers. These
+						bumps help you position your fingers correctly without looking.
+					</p>
+					<p>
+						<strong>Left Hand:</strong>
+					</p>
+					<ul>
+						<li>Index finger on F</li>
+						<li>Middle finger on D</li>
+						<li>Ring finger on S</li>
+						<li>Little finger on A</li>
+					</ul>
 
-  )
+					<p>
+						<strong>Right Hand:</strong>
+					</p>
+					<ul>
+						<li>Index finger on J</li>
+						<li>Middle finger on K</li>
+						<li>Ring finger on L</li>
+						<li>Little finger on ;</li>
+					</ul>
+
+					<p>
+						<strong>Thumbs:</strong> Rest on the spacebar.
+					</p>
+					<div className="button-container">
+						<button>Previous Chapter</button>
+						<button>Next Chapter</button>
+					</div>
+					<button onClick={handleStartGame}>Start Lesson</button>
+				</div>
+				<div className="hand-container">
+					<img src={Hands} alt="" />
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default LessonTwo;
