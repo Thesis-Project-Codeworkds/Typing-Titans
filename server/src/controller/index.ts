@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { Prisma, PrismaClient } from '@prisma/client'
 import prismaRandom from 'prisma-extension-random';
-import { Webhook } from 'svix';
 
 const prisma = new PrismaClient().$extends(prismaRandom());
 
@@ -62,51 +61,15 @@ const getShortcuts = async (req: Request, res: Response) => {
 
 const svixHook = async (req: Request, res: Response) => {
   try {
-    const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
+    const payload = req.body;
 
-    if (!WEBHOOK_SECRET) {
-      throw new Error('Clerk webhook secret is missing');
-    }
-
-    const headers = req.headers;
-    const payload: any = req.body;
-
-    const svix_id = headers['svix-id'] as string;
-    const svix_timestamp = headers['svix-timestamp'] as string;
-    const svix_signature = headers['svix-signature'] as string;
-
-    if (!svix_id || !svix_timestamp || !svix_signature) {
-      return new Response('Error occured -- no svix headers', {
-        status: 400,
-      });
-    }
-
-    const webhook = new Webhook(WEBHOOK_SECRET);
-    let clerkEvent: any;
-
-    try {
-      clerkEvent = webhook.verify(payload, {
-        'svix-id': svix_id,
-        'svix-timestamp': svix_timestamp,
-        'svix-signature': svix_signature,
-      });
-    } catch (e: any) {
-      console.log('Error verifying webhook:', e.message);
-
-      return res.status(400).json({
-        success: false,
-        message: e.message,
-      });
-    }
-
-    // Do something with the payload
-    const { id } = clerkEvent.data;
-    const eventType = clerkEvent.type;
+    const { id } = payload.data;
+    const eventType = payload.type;
     console.log(`Webhook with an ID of ${id} and type of ${eventType}`);
-    console.log('Webhook body:', clerkEvent.data);
+    console.log('Webhook body:', payload.data);
 
-    if (clerkEvent.type === 'user.created') {
-      console.log('userId:', clerkEvent.data.id)
+    if (payload.type === 'user.created') {
+      console.log('userId:', payload.data.id)
     }
 
     return res.status(200).json({
