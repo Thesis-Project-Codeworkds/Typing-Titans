@@ -52,3 +52,10 @@
   background-color: #FDFFB6;
 }
 
+.custom-keyboard-style-les2 .key.physical-active .front,
+.custom-keyboard-style-les2 .key:active .front {
+  transform: translateY(0px);
+  transition: transform 60ms;
+  background: var(--main-color); 
+  color: var(--main-bg-color);
+}
