@@ -4,6 +4,7 @@ import countdownReducer from './countdownSlice';
 import sentenceReducer from './sentence';
 import lessonsReducer from './lessonsSlice';
 import keyboardReducer from './KeyboardSlice';
+import lessonGameReducer from './lessonGameSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     sentence: sentenceReducer,
     lessons: lessonsReducer,
     keyboard: keyboardReducer,
+    lessonGame: lessonGameReducer,
   },
 });
 

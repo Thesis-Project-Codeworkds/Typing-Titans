@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import './Keyboard.css';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { keyPressed, keyReleased } from '../../redux/KeyboardSlice';
+import { setActiveKey } from '../../redux/lessonGameSlice';
 
 interface KeyStyles {
   [key: string]: string;
@@ -9,8 +10,8 @@ interface KeyStyles {
 
 const Keyboard = ({ className = '' }: { className: string }) => {
   const dispatch = useAppDispatch();
-
   const activeKeys = useAppSelector(state => state.keyboard.activeKeys);
+  const { activeKey, gameStarted } = useAppSelector(state => state.lessonGame);
 
   useEffect(() => {
     const handlePhysicalKeyDown = (event: KeyboardEvent) => {
@@ -18,6 +19,9 @@ const Keyboard = ({ className = '' }: { className: string }) => {
       console.log(`Handling key down: ${key}`);
       if (!activeKeys[key]) {
         dispatch(keyPressed(key));
+        if (gameStarted && key === activeKey) {
+          dispatch(setActiveKey(null));
+        }
       }
     };
 
@@ -34,13 +38,16 @@ const Keyboard = ({ className = '' }: { className: string }) => {
       window.removeEventListener('keydown', handlePhysicalKeyDown);
       window.removeEventListener('keyup', handlePhysicalKeyUp);
     };
-  }, [dispatch, activeKeys]);
+  }, [dispatch, activeKeys, gameStarted, activeKey]);
 
   console.log('Rendering Keyboard Component', activeKeys);
 
   const handleMouseDown = (key: string) => {
     if (!activeKeys[key]) {
       dispatch(keyPressed(key.toLowerCase()));
+      if (gameStarted && key === activeKey) {
+        dispatch(setActiveKey(null));
+      }
     }
   };
 
@@ -57,8 +64,8 @@ const Keyboard = ({ className = '' }: { className: string }) => {
     'TAB': 'utility', 'q': 'little-finger', 'w': 'ring-finger', 'e': 'middle-finger', 'r': 'index-finger',
     't': 'index-finger', 'y': 'index-finger', 'u': 'index-finger', 'i': 'index-finger', 'o': 'middle-finger',
     'p': 'ring-finger', '[': 'little-finger', ']': 'little-finger', '\\': 'little-finger',
-    'CAPS': 'utility', 'a': 'little-finger', 's': 'ring-finger', 'd': 'middle-finger', 'f': 'index-finger',
-    'g': 'index-finger', 'h': 'index-finger', 'j': 'index-finger', 'k': 'index-finger', 'l': 'middle-finger',
+    'CAPS': 'utility', 'a': 'little-finger', 's': 'ring-finger', 'd': 'middle-finger', 'f': 'index-finger les-2',
+    'g': 'index-finger', 'h': 'index-finger', 'j': 'index-finger les-2', 'k': 'index-finger', 'l': 'middle-finger',
     ';': 'ring-finger', "'": 'little-finger', 'ENTER': 'utility',
     'SHIFT': 'utility', 'z': 'little-finger', 'x': 'ring-finger', 'c': 'middle-finger', 'v': 'index-finger',
     'b': 'index-finger', 'n': 'index-finger', 'm': 'index-finger', ',': 'middle-finger', '.': 'ring-finger',
@@ -77,7 +84,7 @@ const Keyboard = ({ className = '' }: { className: string }) => {
           {row.map((key, index) => (
             <button key={index} 
                     // className={`key ${keyStyles[key]} ${activeKeys[key] ? 'active' : ''}`}
-                    className={`key ${keyStyles[key]} ${activeKeys[key] ? 'physical-active' : ''}`}
+                    className={`key ${keyStyles[key]} ${activeKeys[key] ? 'physical-active' : ''} ${key === activeKey ? 'lesson-active' : ''}`}
                     onMouseDown={() => handleMouseDown(key)}
                     onMouseUp={() => handleMouseUp(key)}
                     onTouchStart={() => handleMouseDown(key)}
