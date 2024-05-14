@@ -69,8 +69,23 @@
   transition: transform 34ms;
 }
 
-.key.lesson-active .front {
-  background-color: #4CAF50; /* Green background for active lesson key */
+.key.index-finger.lesson-active .front {
+  background-color: #FDFFB6; 
+  animation: pulse 1s infinite;
+}
+
+.key.middle-finger.lesson-active .front {
+  background-color: #FFD6A5; 
+  animation: pulse 1s infinite;
+}
+
+.key.ring-finger.lesson-active .front {
+  background-color: #FFADAD; 
+  animation: pulse 1s infinite;
+}
+
+.key.little-finger.lesson-active .front {
+  background-color: #DEDAF4; 
   animation: pulse 1s infinite;
 }
 

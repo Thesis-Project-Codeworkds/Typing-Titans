@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface LessonGameState {
   activeKey: string | null;
   gameStarted: boolean;
+  keysTyped: number;
 }
 
 const initialState: LessonGameState = {
   activeKey: null,
-  gameStarted: false
+  gameStarted: false,
+  keysTyped: 0,
 };
 
 const lessonGameSlice = createSlice({

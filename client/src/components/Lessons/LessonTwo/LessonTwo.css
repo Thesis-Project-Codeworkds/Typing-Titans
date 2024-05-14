@@ -50,10 +50,6 @@
   transform: scale(.9);
 }
 
- .custom-keyboard-style-les2 .les-2 .front{
-  background-color: #FDFFB6;
-}
-
 .custom-keyboard-style-les2 .key.physical-active .front,
 .custom-keyboard-style-les2 .key:active .front {
   transform: translateY(0px);

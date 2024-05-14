@@ -2,7 +2,7 @@ import './LessonTwo.css'
 import Hands from '../../../assets/Hands.svg'
 import Keyboard from '../../Keyboard/Keyboard'
 import { useDispatch } from 'react-redux';
-import { setActiveKey, startGame } from '../../../redux/lessonGameSlice'
+import { setActiveKey, startGame } from '../../../redux/lessonGameSlice';
 
 
 const LessonTwo = () => {
@@ -11,7 +11,7 @@ const LessonTwo = () => {
 
   const handleStartGame = () => {
     dispatch(startGame());
-    const keys = ['CAPS', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'ENTER'];
+    const keys = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'ENTER'];
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
     dispatch(setActiveKey(randomKey));
   };
