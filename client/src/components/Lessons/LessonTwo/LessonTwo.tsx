@@ -21,7 +21,10 @@ const LessonTwo = () => {
             <li>This is the "Basic Position". When not typing or after pressing a key your fingers should always return to the basic position.</li>
             <li>Ten finger touch typing can be summarized as: basic position and then pressa key, then basic porision again.</li>
           </ul>
-          <button>Next Chapter</button>
+          <div className='button-container'>
+            <button>Previous Chapter</button>
+            <button>Next Chapter</button>
+          </div>
         </div>
         <div className='hand-container'>
           <img src={Hands} alt="" />

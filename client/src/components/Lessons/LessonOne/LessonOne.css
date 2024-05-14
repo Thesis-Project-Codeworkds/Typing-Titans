@@ -35,6 +35,11 @@
   padding: 20px;
 }
 
+.button-container {
+  display: flex;
+  margin: 10px;
+}
+
 .text-container button {
   display: flex;
   margin: auto;
@@ -42,6 +47,8 @@
   border: none;
   background-color: var(--main-color);
   color: var(--main-bg-color);
+  width: 150px;
+  justify-content: center;
 }
 
 .text-container button:active {

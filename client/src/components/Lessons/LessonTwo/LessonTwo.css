@@ -42,6 +42,8 @@
   border: none;
   background-color: var(--main-color);
   color: var(--main-bg-color);
+  width: 150px;
+  justify-content: center;
 }
 
 .text-container button:active {
