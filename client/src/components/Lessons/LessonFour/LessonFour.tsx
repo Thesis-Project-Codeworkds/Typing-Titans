@@ -1,4 +1,4 @@
-import "./LessonTwo.css";
+import "./LessonFour.css";
 import Hands from "../../../assets/Hands.svg";
 import Keyboard from "../../Keyboard/Keyboard";
 import { useDispatch } from "react-redux";
@@ -8,28 +8,61 @@ import {
 	setKeysSequence,
 } from "../../../redux/lessonGameSlice";
 
-const LessonTwo = () => {
+const LessonThree = () => {
 	const dispatch = useDispatch();
 
 	const handleStartGame = () => {
 		dispatch(resetGame());
 		dispatch(startGame());
-		const keys = ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'"];
-		// const fixedKeys = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'];
+		const keys = [
+			"a",
+			"s",
+			"d",
+			"f",
+			"g",
+			"h",
+			"j",
+			"k",
+			"l",
+			";",
+			"'",
+			"q",
+			"w",
+			"e",
+			"r",
+			"t",
+			"y",
+			"u",
+			"i",
+			"o",
+			"p",
+			"[",
+			"]",
+			"\\",
+			"z",
+			"x",
+			"c",
+			"v",
+			"b",
+			"n",
+			"m",
+			",",
+			".",
+			"/",
+		];
 
 		const randomKeys = Array.from(
-			{ length: 10 },
+			{ length: 20 },
 			() => keys[Math.floor(Math.random() * keys.length)]
 		);
 		console.log("Generated random keys:", randomKeys);
 		dispatch(setKeysSequence(randomKeys));
-		// dispatch(setKeysSequence(fixedKeys));
 	};
 
 	return (
 		<>
 			<div className="lesson-two lessons-card-container">
-				<h2 className="lesson-title">Basic Position</h2>
+				<h2 className="lesson-title">Advanced Typing</h2>
 				<div className="keyboard-container">
 					<Keyboard className="custom-keyboard-style-les2" />
 				</div>
@@ -43,7 +76,9 @@ const LessonTwo = () => {
 						<li>
 							A random key will appear on the screen from the following set:
 							<ul>
-								<li>a, s, d, f, g, h, j, k, l, ;, '</li>
+								<li>Row 1: a, s, d, f, g, h, j, k, l, ;, '</li>
+								<li>Row 2: q, w, e, r, t, y, u, i, o, p, [, ], \</li>
+								<li>Row 3: z, x, c, v, b, n, m, ,, ., /</li>
 							</ul>
 						</li>
 						<li>
@@ -73,4 +108,4 @@ const LessonTwo = () => {
 	);
 };
 
-export default LessonTwo;
+export default LessonThree;

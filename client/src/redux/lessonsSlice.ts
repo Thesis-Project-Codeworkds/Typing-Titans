@@ -15,6 +15,10 @@ const initialState: LessonState = {
   lessons: [
     { name: 'Lesson 1', componentType: 'LessonOne' },
     { name: 'Lesson 2', componentType: 'LessonTwo' },
+    { name: 'Lesson 3', componentType: 'LessonThree' },
+    { name: 'Lesson 4', componentType: 'LessonFour' },
+    { name: 'Lesson 5', componentType: 'LessonFive' },
+
   ],
   completedLessons: [],
   activeLessonIndex: 0,
