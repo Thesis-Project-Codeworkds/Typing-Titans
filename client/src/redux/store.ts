@@ -3,6 +3,7 @@ import sidebarReducer from './sidebarSlice';
 import countdownReducer from './countdownSlice';
 import sentenceReducer from './sentence';
 import lessonsReducer from './lessonsSlice';
+import keyboardReducer from './KeyboardSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     countdown: countdownReducer,
     sentence: sentenceReducer,
     lessons: lessonsReducer,
+    keyboard: keyboardReducer,
   },
 });
 

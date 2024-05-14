@@ -1,10 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import LessonOne from '../components/Lessons/LessonOne/LessonOne';
-import LessonTwo from '../components/Lessons/LessonTwo/LessonTwo';
 
 interface Lesson {
   name: string;
-  component: React.ComponentType; 
+  componentType: string;
 }
 
 interface LessonState {
@@ -15,8 +13,8 @@ interface LessonState {
 
 const initialState: LessonState = {
   lessons: [
-    { name: 'Lesson 1', component: LessonOne },
-    { name: 'Lesson 2', component: LessonTwo },
+    { name: 'Lesson 1', componentType: 'LessonOne' },
+    { name: 'Lesson 2', componentType: 'LessonTwo' },
   ],
   completedLessons: [],
   activeLessonIndex: 0,

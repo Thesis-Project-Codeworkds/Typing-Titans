@@ -77,3 +77,12 @@
 .custom-keyboard-style .key.thumb .front {
   background-color: #D9EDF8;
 }
+
+
+.custom-keyboard-style .key.physical-active .front,
+.custom-keyboard-style .key:active .front {
+  transform: translateY(0px);
+  transition: transform 60ms;
+  background: var(--main-color); 
+  color: var(--main-bg-color);
+}

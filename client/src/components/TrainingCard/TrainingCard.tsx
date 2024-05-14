@@ -1,9 +1,8 @@
-import './TrainingCard.css'
-import ProgressBar from '../ProgressBar/ProgressBar'
+import './TrainingCard.css';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
-import { completeLesson, setActiveLessonIndex } from '../../redux/lessonsSlice';
+import { setActiveLessonIndex } from '../../redux/lessonsSlice';
 import { useNavigate } from 'react-router-dom';
-
 
 const TrainingCard = () => {
   const dispatch = useAppDispatch();
@@ -11,15 +10,16 @@ const TrainingCard = () => {
   const lessons = useAppSelector(state => state.lessons.lessons);
   const completedLessons = useAppSelector(state => state.lessons.completedLessons);
 
+  if (!lessons || !completedLessons) {
+    return <div>Loading lessons...</div>;
+  }
+
+  const progress = (completedLessons.length / lessons.length) * 100;
 
   const handleLessonSelect = (index: number) => {
     dispatch(setActiveLessonIndex(index));
     navigate('/lessons');
   };
-
-
-  const progress = (completedLessons.length / lessons.length) * 100;
-
 
   return (
     <div className="training-card-container">
@@ -31,14 +31,14 @@ const TrainingCard = () => {
       <div className='lessons-container '>
         <h3 className='lessons-title'>Lessons:</h3>
         {lessons.map((lesson, index) => (
-          <div key={lesson.name} className={`lesson ${completedLessons.includes(lesson.name) ? 'completed' : ''}`}>
-            <div onClick={() => handleLessonSelect(index)}>{lesson.name}</div>
+          <div key={lesson.name} className={`lesson ${completedLessons.includes(lesson.name) ? 'completed' : ''}`}
+               onClick={() => handleLessonSelect(index)}>
+            {lesson.name}
           </div>
         ))}
       </div>
     </div>
   );
-
 }
 
 export default TrainingCard;
