@@ -7,11 +7,11 @@ const LessonTwo = () => {
   return (
     <>
       <div className="lesson-two lessons-card-container">
-       <h2 className='lesson-title'>Basic Position in Ten Finger Typing</h2>
-       <div className='keyboard-container'>
-        <Keyboard className="custom-keyboard-style-les2"/>
-       </div>
-       <div className='text-container'>
+        <h2 className='lesson-title'>Basic Position in Ten Finger Typing</h2>
+        <div className='keyboard-container'>
+          <Keyboard className="custom-keyboard-style-les2"/>
+        </div>
+        <div className='text-container'>
           <h4>Basic Position in Ten Finger Typing</h4>
           <ul>
             <li>Feel the bumps on the F and J keys.</li>
@@ -22,10 +22,10 @@ const LessonTwo = () => {
             <li>Ten finger touch typing can be summarized as: basic position and then pressa key, then basic porision again.</li>
           </ul>
           <button>Next Chapter</button>
-       </div>
-       <div className='hand-container'>
+        </div>
+        <div className='hand-container'>
           <img src={Hands} alt="" />
-       </div>
+        </div>
       </div>
     </>
 

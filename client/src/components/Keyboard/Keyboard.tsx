@@ -7,7 +7,7 @@ interface KeyStyles {
   [key: string]: string;
 }
 
-const Keyboard = ({ className = "" }: { className: string }) => {
+const Keyboard = ({ className = '' }: { className: string }) => {
   const dispatch = useAppDispatch();
 
   const activeKeys = useAppSelector(state => state.keyboard.activeKeys);
