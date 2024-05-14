@@ -1,8 +1,16 @@
 import "./LessonOne.css";
 import Hands from "../../../assets/Hands.svg";
 import Keyboard from "../../Keyboard/Keyboard";
+import { useDispatch } from "react-redux";
+import { setActiveLessonIndex } from "../../../redux/lessonsSlice";
 
 const LessonOne = () => {
+	const dispatch = useDispatch();
+
+	const handleNextChapter = () => {
+		dispatch(setActiveLessonIndex(1));
+	};
+
 	return (
 		<>
 			<div className="lesson-one lessons-card-container">
@@ -41,8 +49,7 @@ const LessonOne = () => {
 						<strong>Thumbs:</strong> Rest on the spacebar.
 					</p>
 					<div className="button-container">
-						<button>Previous Chapter</button>
-						<button>Next Chapter</button>
+						<button onClick={handleNextChapter}>Next Chapter</button>
 					</div>
 				</div>
 				<div className="hand-container">

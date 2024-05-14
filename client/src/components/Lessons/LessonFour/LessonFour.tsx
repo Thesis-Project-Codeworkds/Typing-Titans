@@ -7,9 +7,18 @@ import {
 	resetGame,
 	setKeysSequence,
 } from "../../../redux/lessonGameSlice";
+import { setActiveLessonIndex } from "../../../redux/lessonsSlice";
 
 const LessonThree = () => {
 	const dispatch = useDispatch();
+
+	const handlePreviousChapter = () => {
+		dispatch(setActiveLessonIndex(2));
+	};
+
+	const handleNextChapter = () => {
+		dispatch(setActiveLessonIndex(4));
+	};
 
 	const handleStartGame = () => {
 		dispatch(resetGame());
@@ -95,8 +104,8 @@ const LessonThree = () => {
 						</li>
 					</ol>
 					<div className="button-container">
-						<button>Previous Chapter</button>
-						<button>Next Chapter</button>
+						<button onClick={handlePreviousChapter}>Previous Chapter</button>
+						<button onClick={handleNextChapter}>Next Chapter</button>
 					</div>
 					<button onClick={handleStartGame}>Start Lesson</button>
 				</div>

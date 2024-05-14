@@ -7,6 +7,7 @@ import {
 	resetGame,
 	setKeysSequence,
 } from "../../../redux/lessonGameSlice";
+import { setActiveLessonIndex } from "../../../redux/lessonsSlice";
 
 const LessonTwo = () => {
 	const dispatch = useDispatch();
@@ -24,6 +25,14 @@ const LessonTwo = () => {
 		console.log("Generated random keys:", randomKeys);
 		dispatch(setKeysSequence(randomKeys));
 		// dispatch(setKeysSequence(fixedKeys));
+	};
+
+	const handlePreviousChapter = () => {
+		dispatch(setActiveLessonIndex(0));
+	};
+
+	const handleNextChapter = () => {
+		dispatch(setActiveLessonIndex(2));
 	};
 
 	return (
@@ -60,8 +69,8 @@ const LessonTwo = () => {
 						</li>
 					</ol>
 					<div className="button-container">
-						<button>Previous Chapter</button>
-						<button>Next Chapter</button>
+						<button onClick={handlePreviousChapter}>Previous Chapter</button>
+						<button onClick={handleNextChapter}>Next Chapter</button>
 					</div>
 					<button onClick={handleStartGame}>Start Lesson</button>
 				</div>
