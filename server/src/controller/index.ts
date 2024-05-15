@@ -59,6 +59,111 @@ const getShortcuts = async (req: Request, res: Response) => {
   }
 };
 
+const newProgress = async (req: Request, res: Response) => {
+
+  const { userId, newDate, newSpeed, newAccuracy } = req.body;
+
+  try {
+    // Parse the newDate and focus only on the date part
+    const parsedDate = new Date(newDate);
+    const startDate = new Date(parsedDate.getFullYear(), parsedDate.getMonth(), parsedDate.getDate());
+    const endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + 1);
+
+    // Check for existing progress on the same date for this user
+    const existingProgress = await prisma.progress.findFirst({
+      where: {
+        userId: userId,
+        date: {
+          gte: startDate,
+          lt: endDate
+        }
+      }
+    });
+
+    if (existingProgress) {
+      // A progress record exists for this date and user
+      if (newSpeed > existingProgress.speed) {
+        // Update existing record because new speed is greater
+        const updatedProgress = await prisma.progress.update({
+          where: {
+            id: existingProgress.id
+          },
+          data: {
+            speed: newSpeed,
+            accuracy: newAccuracy
+          }
+        });
+        return res.status(200).json({
+          message: 'Progress updated successfully.',
+          progress: updatedProgress
+        });
+      } else {
+        // Existing speed is greater or equal, do not update
+        return res.status(200).json({
+          message: 'Existing progress has a greater or equal speed. No update performed.'
+        });
+      }
+    } else {
+      // No existing record, create a new one
+      const newProgress = await prisma.progress.create({
+        data: {
+          date: new Date(newDate),
+          speed: newSpeed,
+          accuracy: newAccuracy,
+          userId: userId
+        }
+      });
+      return res.status(201).json({
+        message: 'New progress created successfully.',
+        progress: newProgress
+      });
+    }
+  } catch (error: any) {
+    console.error('Error managing progress:', error);
+    return res.status(500).json({
+      message: 'Internal server error',
+      error: error.message
+    });
+  }
+}
+
+const getProgressByDay = async (req: Request, res: Response) => {
+
+  const { userId, date } = req.body;
+
+  try {
+    // Parse the newDate and focus only on the date part
+    const parsedDate = new Date(date);
+    const startDate = new Date(parsedDate.getFullYear(), parsedDate.getMonth(), parsedDate.getDate());
+    const endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + 1);
+
+    // Check for existing progress on the same date for this user
+    const progress = await prisma.progress.findFirst({
+      where: {
+        userId: userId,
+        date: {
+          gte: startDate,
+          lt: endDate
+        }
+      }
+    });
+
+    return res.status(201).json({
+      message: 'New progress created successfully.',
+      progress: progress
+    });
+
+  } catch (error: any) {
+    console.error('Error managing progress:', error);
+    return res.status(500).json({
+      message: 'Internal server error',
+      error: error.message
+    });
+  }
+}
+
 const svixHook = async (req: Request, res: Response) => {
   try {
     const payload = req.body;
@@ -82,4 +187,4 @@ const svixHook = async (req: Request, res: Response) => {
   }
 }
 
-export { root, getUsers, newUser, getUsersWithDetails, getShortcuts, svixHook };
+export { root, getUsers, newUser, getUsersWithDetails, getShortcuts, newProgress, getProgressByDay, svixHook };

@@ -9,11 +9,6 @@
   font-size: 16px;
 }
 
-.customCalendar .MuiCalendarPicker-root {
-  width: 350px;
-  height: fit-content;
-}
-
 .customCalendar .Mui-selected {
   background-color: var(--main-color) !important;
   color: white !important;

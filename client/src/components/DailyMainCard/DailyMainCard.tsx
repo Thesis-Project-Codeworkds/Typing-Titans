@@ -9,11 +9,16 @@ const DailyMainCard = () => {
 
 	return (
 		<LocalizationProvider dateAdapter={AdapterDayjs}>
-			<DateCalendar
-				value={value}
-				onChange={newValue => setValue(newValue)}
-				className="customCalendar"
-			/>
+			<div id='daily-container'>
+
+				<DateCalendar
+					value={value}
+					onChange={newValue => setValue(newValue)}
+					className="customCalendar"
+				/>
+
+
+			</div>
 		</LocalizationProvider>
 	);
 };

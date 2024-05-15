@@ -9,6 +9,8 @@ router.get('/', controller.root);
 router.get('/user', controller.getUsers);
 router.get('/user/details', controller.getUsersWithDetails);
 router.post('/user', controller.newUser);
+router.put('/daily', controller.newProgress);
+router.get('/daily', controller.getProgressByDay);
 router.get('/shortcuts', controller.getShortcuts);
 router.post('/api/webhooks', bodyParser.raw({ type: 'application/json' }), controller.svixHook);
 
