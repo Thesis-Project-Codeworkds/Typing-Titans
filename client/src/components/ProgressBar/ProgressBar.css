@@ -1,7 +1,7 @@
 .progress-bar-container {
   display: flex;
   min-height: 80px;
-  min-width: 20px;
+  min-width: 30px;
   background-color: var(--main-color);
   border-radius: 50px;
   margin: 5%;
