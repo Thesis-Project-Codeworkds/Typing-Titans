@@ -22,8 +22,8 @@ const CompetitiveMainCard = () => {
 			)}
 			{ShortcutSVG && (
 				<>
-					<p className="shortcut-race-title">Shortcut Race</p>
 					<Link to="/lobby/shortcut" className="shortcut-race-card">
+					<p className="shortcut-race-title">Shortcut Race</p>
 						<img
 							src={ShortcutSVG}
 							alt="competition card"
@@ -34,8 +34,8 @@ const CompetitiveMainCard = () => {
 			)}
 			{ComingSoonSVG && (
 				<>
-					<p className="coming-soon-title">Coming Soon!!!</p>
 					<Link to="/lobby/shortcut" className="coming-soon-card">
+					<p className="coming-soon-title">Coming Soon!!!</p>
 						<img
 							src={ComingSoonSVG}
 							alt="competition card"
