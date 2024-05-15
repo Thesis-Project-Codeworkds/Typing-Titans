@@ -36,7 +36,8 @@ export const fetchShortSentence = async (): Promise<string> => {
 
 export const fetchShortcuts = async (): Promise<any> => {
   try {
-    const response = await fetch('http://localhost:3000/shortcuts');
+    const serverDomain = process.env.SERVER_DOMAIN || 'http://localhost:3000';
+    const response = await fetch(`${ serverDomain }/shortcuts`);
 
     if (!response.ok) {
       throw new Error('Failed to fetch shortcuts');
