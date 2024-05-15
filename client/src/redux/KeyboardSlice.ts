@@ -14,11 +14,9 @@ export const keyboardSlice = createSlice({
   reducers: {
     keyPressed: (state, action: PayloadAction<string>) => {
       state.activeKeys[action.payload] = true;
-      console.log(`Key pressed: ${action.payload}`, state);
     },
     keyReleased: (state, action: PayloadAction<string>) => {
       delete state.activeKeys[action.payload];
-      console.log(`Key released: ${action.payload}`, state);
     }
   },
 });

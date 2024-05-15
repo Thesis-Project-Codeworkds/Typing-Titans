@@ -151,7 +151,7 @@ const getProgressByDay = async (req: Request, res: Response) => {
     });
 
     return res.status(201).json({
-      message: 'New progress created successfully.',
+      message: 'progress fetched successfully.',
       progress: progress
     });
 
