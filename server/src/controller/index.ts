@@ -164,6 +164,30 @@ const getProgressByDay = async (req: Request, res: Response) => {
   }
 }
 
+const fetchDailySentence = async (req: Request, res: Response) => {
+  const url = 'https://zenquotes.io/api/today';
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json(); // Assuming the API returns JSON
+    console.log('fetchDailySentence ~ response.json():', data);
+    return res.status(201).json({
+      message: 'progress fetched successfully.',
+      quote: data.q
+    });
+
+  } catch (error: any) {
+    console.error('Error managing progress:', error);
+    return res.status(500).json({
+      message: 'Internal server error',
+      error: error.message
+    });
+  }
+}
+
 const svixHook = async (req: Request, res: Response) => {
   try {
     const payload = req.body;
@@ -187,4 +211,4 @@ const svixHook = async (req: Request, res: Response) => {
   }
 }
 
-export { root, getUsers, newUser, getUsersWithDetails, getShortcuts, newProgress, getProgressByDay, svixHook };
+export { root, getUsers, newUser, getUsersWithDetails, getShortcuts, newProgress, getProgressByDay, fetchDailySentence, svixHook };

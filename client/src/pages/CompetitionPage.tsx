@@ -14,6 +14,7 @@ const CompetitionPage = () => {
 
   const componentMap: ComponentMap = {
     "/competition/typing": <CompetitionCard />,
+    "/competition/daily": <CompetitionCard />,
     "/competition/shortcut": <Shortcut />,
   };
 

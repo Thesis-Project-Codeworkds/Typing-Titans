@@ -15,7 +15,6 @@ export async function fetchProgress(id: number, day: Date) {
         date: dateString
       })
     });
-    console.log('fetchProgress ~ response:', response);
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -23,6 +22,22 @@ export async function fetchProgress(id: number, day: Date) {
     return await response.json();  // Assuming the server sends back JSON
   } catch (error) {
     console.error('Error fetching progress:', error);
-    return null;  // Handle errors as you see fit
   }
 }
+
+export async function fetchDailySentence() {
+  const url = 'https://zenquotes.io/api/quotes';
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json(); // Assuming the API returns JSON
+    console.log('fetchDailySentence ~ response.json():', data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching daily sentence:', error);
+  }
+}
+
