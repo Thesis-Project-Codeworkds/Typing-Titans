@@ -1,3 +1,7 @@
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .landing-page-card-container {
   display: grid;
   margin: 30px 125px -10px 205px;
@@ -6,6 +10,7 @@
   gap: 20px;
   background-color: var(--second-bg-color);
 }
+
 
 .card-container {
   min-height: 400px;
@@ -42,4 +47,3 @@
   align-self: flex-end;
   padding: 15px;
 }
-
