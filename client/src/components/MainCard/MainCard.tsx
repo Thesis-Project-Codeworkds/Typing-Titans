@@ -14,8 +14,8 @@ const MainCard = ({ title, imgSrc1, imgSrc2, imgSrc3 }: MainCardProps) => {
 			<h2 className="card-title">{title}</h2>
 			{imgSrc1 && (
 				<>
-					<p className="typing-race-title">Typing Race</p>
 					<Link to="/lobby/typing" className="typing-race-card">
+						<p className="typing-race-title">Typing Race</p>
 						<img
 							src={imgSrc1}
 							alt="competition card"

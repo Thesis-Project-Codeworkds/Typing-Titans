@@ -1,24 +1,25 @@
 import Navbar from "../components/Navbar/Navbar";
 import Sidebar from "../components/Sidebar/Sidebar";
-import MainCard from "../components/MainCard/MainCard";
-import CompeteCardSVG from "../assets/CompeteCard.svg";
-import ShortcutSVG from "../assets/shortcut.svg";
-import ComingSoonSVG from "../assets/comingSoon.svg";
+import TrainingMainCard from "../components/TrainingMainCard/TrainingMainCard";
+import CompetitiveMainCard from "../components/CompetitiveMainCard/CompetitiveMainCard";
+import DailyMainCard from "../components/DailyMainCard/DailyMainCard";
 
 const LandingPage = () => {
 	return (
 		<div>
 			<Navbar />
 			<Sidebar />
-			<div>
-				<MainCard title="Training" />
-				<MainCard
-					title="Competitive"
-					imgSrc1={CompeteCardSVG}
-					imgSrc2={ShortcutSVG}
-					imgSrc3={ComingSoonSVG}
-				/>
-				<MainCard title="Daily Challenges" />
+			<div className="card-container">
+				<h2 className="card-title">Training</h2>
+				<TrainingMainCard />
+			</div>
+			<div className="card-container">
+				<h2 className="card-title">Competitive</h2>
+				<CompetitiveMainCard />
+			</div>
+			<div className="card-container">
+				<h2 className="card-title">Daily Challenge</h2>
+				<DailyMainCard />
 			</div>
 		</div>
 	);
