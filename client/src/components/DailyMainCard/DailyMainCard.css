@@ -1,0 +1,31 @@
+.customCalendar {
+  color: var(--main-color);
+  border-radius: 10px;
+  border: 1px solid var(--main-color);
+}
+
+.customCalendar .MuiPickersDay-root {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.customCalendar .MuiCalendarPicker-root {
+  width: 350px;
+  height: fit-content;
+}
+
+.customCalendar .Mui-selected {
+  background-color: var(--main-color) !important;
+  color: white !important;
+}
+
+
+.customCalendar .MuiPickersDay-dayWithMargin {
+  color: var(--main-color);
+}
+
+.customCalendar .MuiPickersDay-dayWithMargin.MuiPickersDay-today {
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+
+}
