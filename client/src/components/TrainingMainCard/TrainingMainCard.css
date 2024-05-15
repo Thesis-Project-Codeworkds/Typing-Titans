@@ -8,7 +8,7 @@
 }
 
 .keyboard:hover {
-  transform: scale(.85);
+  transform: scale(.83);
   transition: transform 1s;
 }
 

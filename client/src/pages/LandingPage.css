@@ -47,3 +47,12 @@ body::-webkit-scrollbar {
   align-self: flex-end;
   padding: 15px;
 }
+
+.training-title-landing,
+.daily-title {
+  padding-top: 20px
+}
+
+.daily-title {
+  margin-bottom: 10px;
+}

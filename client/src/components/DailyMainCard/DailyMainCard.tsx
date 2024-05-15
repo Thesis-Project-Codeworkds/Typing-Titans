@@ -46,13 +46,13 @@ const DailyMainCard = () => {
 				/>
 
 				{stats.speed && <>
-					<h2>Best Stats of {date.format('DD/MM/YYYY')}</h2>
-					<p>Speed: {stats.speed ? `${stats.speed} W/minute` : 'Loading...'}</p>
-					<p>Accuracy: {stats.accuracy ? `${stats.accuracy}%` : 'Loading...'}</p>
+					<h2 className='stats-title'>Best Stats of {date.format('DD/MM/YYYY')}</h2>
+					<p className='stats-text'>Speed: {stats.speed ? `${stats.speed} W/minute` : 'Loading...'}</p>
+					<p className='stats-text'>Accuracy: {stats.accuracy ? `${stats.accuracy}%` : 'Loading...'}</p>
 				</>}
-				{!stats.speed && <h2>No data available for this date!</h2>}
+				{!stats.speed && <h2 className='no-data-available-text'>No data available for this date!</h2>}
 
-				<Link to={'/competition/daily'}>Go to Challenge</Link>
+				<Link to={'/competition/daily'}><button className='challenge-button'>Go to Challenge</button></Link>
 
 
 			</div>

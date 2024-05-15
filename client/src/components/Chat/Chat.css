@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 
-#messages-container{
+#messages-container {
   display: flex;
   flex-direction: column;
   padding: 5px;
@@ -41,7 +41,7 @@
   border: none;
   color: var(--main-color);
 }
-  
+
 #chat-input::placeholder {
   color: rgba(151, 71, 255, 0.75);
 }

@@ -12,7 +12,7 @@ const LandingPage = () => {
 			<Sidebar />
 			<div className="landing-page-card-container">
 				<div className="card-container training">
-					<h2 className="card-title">Training</h2>
+					<h2 className="card-title training-title-landing">Training</h2>
 					<TrainingMainCard />
 				</div>
 				<div className="card-container competitive">
@@ -20,7 +20,7 @@ const LandingPage = () => {
 					<CompetitiveMainCard />
 				</div>
 				<div className="card-container daily">
-					<h2 className="card-title">Daily Challenge</h2>
+					<h2 className="card-title daily-title">Daily Challenge</h2>
 					<DailyMainCard />
 				</div>
 			</div>
