@@ -1,0 +1,95 @@
+.lessons-card-container {
+  display: grid;
+  max-height: 100vh;
+  margin: 30px 125px -10px 205px;
+  background-color: var(--main-bg-color);
+  border-radius: 20px;
+  filter: drop-shadow(0px 5px 4px gray);
+  grid-template-rows: 2fr 4fr 4fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  color: var(--main-color);
+}
+
+.lesson-title {
+  margin-top: 20px;
+  grid-column: 1 / 3;
+  align-self: center;
+  font-size: 42px;
+}
+
+.keyboard-container {
+  grid-row: 2 / 3;
+  grid-column: 1 / 3;
+}
+
+.text-container {
+  grid-column: 3 / 4;
+  grid-row: 2 / 4;
+  text-align: justify;
+  line-height: 1.5rem;
+  margin: 20px;
+}
+
+.text-container h4{
+  text-align: center;
+  padding: 20px;
+}
+
+.button-container {
+  display: flex;
+  margin: 10px;
+}
+
+.text-container button {
+  display: flex;
+  margin: auto;
+  padding: 10px 20px;
+  border: none;
+  background-color: var(--main-color);
+  color: var(--main-bg-color);
+  width: 150px;
+  justify-content: center;
+}
+
+.text-container button:active {
+  transform: scale(.9);
+}
+
+.hand-container{
+  grid-row: 3 / 4;
+  grid-column: 1 / 3;
+}
+
+.hand-container img {
+  width: 25vw;
+}
+
+
+.custom-keyboard-style .key.index-finger .front {
+  background-color: #FDFFB6;
+}
+
+.custom-keyboard-style .key.middle-finger .front {
+  background-color: #FFD6A5; 
+}
+
+.custom-keyboard-style .key.ring-finger .front {
+  background-color: #FFADAD;
+}
+
+.custom-keyboard-style .key.little-finger .front {
+  background-color: #DEDAF4; 
+}
+
+.custom-keyboard-style .key.thumb .front {
+  background-color: #D9EDF8;
+}
+
+
+.custom-keyboard-style .key.physical-active .front,
+.custom-keyboard-style .key:active .front {
+  transform: translateY(0px);
+  transition: transform 60ms;
+  background: var(--main-color); 
+  color: var(--main-bg-color);
+}

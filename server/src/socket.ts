@@ -2,7 +2,7 @@ import { instrument } from '@socket.io/admin-ui';
 import { Server as SocketIOServer, Socket } from 'socket.io';
 import { Server as HttpServer } from 'http';
 
-import { fetchShortSentence } from './services/api-service';
+import { fetchShortSentence, fetchShortcuts } from './services/api-service';
 
 let readyPlayers: string[] = [];
 let userNames: any = {};
@@ -24,18 +24,20 @@ const socket = (server: HttpServer) => {
     socket.broadcast.emit('connected');
 
     socket.on('end-competition', (time: number, speed: number, accuracy: number) => {
+      const winner = userNames[socket.id] ? userNames[socket.id] : 'Anonymous';
 
-      socket.broadcast.emit('winner', `${ userNames[socket.id]
-        ? userNames[socket.id]
-        : 'Another player'
-      } has won!`, time, speed, accuracy);
-
-      socket.emit('winner', `You won!`, time, speed, accuracy);
+      socket.broadcast.emit('winner', winner + ' has won!', time, speed, accuracy);
+      socket.emit('winner', 'You won!', time, speed, accuracy);
     });
 
     socket.on('username', (username: string) => {
       userNames[socket.id] = username;
     });
+
+    socket.on('send-message', (msg: string) => {
+      const name = userNames[socket.id] ? userNames[socket.id] : 'Anonymous'
+      socket.broadcast.emit('receive-message', msg, name + ': ')
+    })
 
     socket.on('isReady', async () => {
       readyPlayers = readyPlayers.includes(socket.id)
@@ -45,6 +47,7 @@ const socket = (server: HttpServer) => {
       if (readyPlayers.length > 1) {
         io.emit('countdown');
         io.emit('sentence', await fetchShortSentence());
+        io.emit('shortcuts', await fetchShortcuts());
 
         setTimeout(() => {
           readyPlayers = [];

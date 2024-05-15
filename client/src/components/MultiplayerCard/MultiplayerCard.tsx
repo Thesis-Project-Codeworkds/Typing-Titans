@@ -8,18 +8,36 @@ import UserNameForm from '../UserNameForm/UserNameForm';
 import socket from '../../socket';
 import { useAppDispatch } from '../../redux/hooks';
 import { setSentence } from '../../redux/sentence';
+import { setShortcut } from '../../redux/shortcut';
+import Chat from '../Chat/Chat';
+
+interface Shortcut {
+  name: string;
+  windows: string[];
+  mac: string[];
+}
 
 const MultiplayerCard = () => {
+  const pathname = window.location.pathname.split('/').pop() || "";
 
+  const title = pathname.charAt(0).toUpperCase() + pathname.slice(1)
   const dispatch = useAppDispatch();
 
-  socket.on('sentence', (sentence: string) => {
-    dispatch(setSentence(sentence));
-  });
+  if (pathname === "typing") {
+    socket.on('sentence', (sentence: string) => {
+      dispatch(setSentence(sentence));
+    });
+  }
+  if (pathname === "shortcut") {
+    socket.on('shortcuts', (shortcut: Shortcut[]) => {
+      console.log('socket.on ~ shortcut:', shortcut);
+      dispatch(setShortcut(shortcut));
+    });
+  }
 
   return (
     <div className="multiplayer-card-container">
-      <h2 className='multiplayer-title'>Typing Race</h2>
+      <h2 className='multiplayer-title'>{title} Race</h2>
       <div className='player-one-container'>
         <h4 className='player-title one'>Player One</h4>
         <img src={Player1} alt="Player 1 Icon" />
@@ -31,7 +49,10 @@ const MultiplayerCard = () => {
       </div>
       <ReadyButton />
       <div className='countdown-container'>
-        <Countdown />
+        <Countdown path={pathname} />
+      </div>
+      <div className='chat-container'>
+        <Chat />
       </div>
     </div>
   )
