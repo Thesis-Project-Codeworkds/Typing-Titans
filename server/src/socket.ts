@@ -24,9 +24,9 @@ const socket = (server: HttpServer) => {
     socket.broadcast.emit('connected');
 
     socket.on('end-competition', (time: number, speed: number, accuracy: number) => {
-      const winnerMessage = userNames[socket.id] ? userNames[socket.id] : 'Another player';
+      const winner = userNames[socket.id] ? userNames[socket.id] : 'Anonymous';
 
-      socket.broadcast.emit('winner', winnerMessage + ' has won!', time, speed, accuracy);
+      socket.broadcast.emit('winner', winner + ' has won!', time, speed, accuracy);
       socket.emit('winner', 'You won!', time, speed, accuracy);
     });
 
@@ -41,8 +41,8 @@ const socket = (server: HttpServer) => {
 
     socket.on('isReady', async () => {
       readyPlayers = readyPlayers.includes(socket.id)
-      ? readyPlayers.filter(id => id != socket.id)
-      : [ ...readyPlayers, socket.id ];
+        ? readyPlayers.filter(id => id != socket.id)
+        : [ ...readyPlayers, socket.id ];
 
       if (readyPlayers.length > 1) {
         io.emit('countdown');
