@@ -1,3 +1,4 @@
+import "./LandingPage.css";
 import Navbar from "../components/Navbar/Navbar";
 import Sidebar from "../components/Sidebar/Sidebar";
 import TrainingMainCard from "../components/TrainingMainCard/TrainingMainCard";
@@ -9,17 +10,19 @@ const LandingPage = () => {
 		<div>
 			<Navbar />
 			<Sidebar />
-			<div className="card-container">
-				<h2 className="card-title">Training</h2>
-				<TrainingMainCard />
-			</div>
-			<div className="card-container">
-				<h2 className="card-title">Competitive</h2>
-				<CompetitiveMainCard />
-			</div>
-			<div className="card-container">
-				<h2 className="card-title">Daily Challenge</h2>
-				<DailyMainCard />
+			<div className="landing-page-card-container">
+				<div className="card-container training">
+					<h2 className="card-title">Training</h2>
+					<TrainingMainCard />
+				</div>
+				<div className="card-container competitive">
+					<h2 className="card-title">Competitive</h2>
+					<CompetitiveMainCard />
+				</div>
+				<div className="card-container daily">
+					<h2 className="card-title">Daily Challenge</h2>
+					<DailyMainCard />
+				</div>
 			</div>
 		</div>
 	);
