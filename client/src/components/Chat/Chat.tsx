@@ -45,7 +45,7 @@ const Chat = () => {
       <div id='messages-container'>
        {messages.map(((msg, index) => (
          <h2 key={index} className={msg.author === 'You: ' ? 'message sent' : 'message received'}>
-          {msg.author} 
+          {msg.author}
           <span id='message-content'>{msg.content}</span>
         </h2>
        )))}
@@ -57,4 +57,4 @@ const Chat = () => {
   )
 }
 
-export default Chat
+export default Chat;
