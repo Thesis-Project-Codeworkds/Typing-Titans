@@ -6,7 +6,7 @@ export const fetchSentence = async (): Promise<string> => {
     const response = await fetch(NINJA_QUOTES_API, {
     method: 'GET',
     headers: {
-      'X-Api-Key': process.env.VITE_API_KEY || '',
+      'X-Api-Key': process.env.NINJA_API_KEY || '',
     }
   });
 
