@@ -1,5 +1,6 @@
 .card-title {
   grid-column: 1 / 4;
+  align-self: center;
 }
 
 .typing-race-card {
