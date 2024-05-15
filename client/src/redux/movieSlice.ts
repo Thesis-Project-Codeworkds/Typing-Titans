@@ -20,9 +20,8 @@ export const movie = createSlice({
   name: 'movie',
   initialState,
   reducers: {
-    setMovie: (state, action: PayloadAction<MovieState[]>) => {
-      state = action.payload;
-      return state
+    setMovie: (_, action: PayloadAction<MovieState[]>) => {
+      return action.payload;
     },
   },
 });

@@ -3,7 +3,7 @@ import './CompetitionCard.css'
 
 import socket from '../../socket';
 import { useAppDispatch } from '../../redux/hooks';
-import { setSentence } from '../../redux/sentence';
+import { setSentence } from '../../redux/sentenceSlice';
 
 const CompetitionCard = () => {
   const pathname = window.location.pathname.split('/').pop() || "";

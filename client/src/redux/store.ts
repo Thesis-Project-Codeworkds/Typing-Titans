@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import sidebarReducer from './sidebarSlice';
 import countdownReducer from './countdownSlice';
-import sentenceReducer from './sentence';
+import sentenceReducer from './sentenceSlice';
 import lessonsReducer from './lessonsSlice';
 import keyboardReducer from './KeyboardSlice';
 import lessonGameReducer from './lessonGameSlice';
-import shortcutReducer from './shortcut';
-import movieReducer from './movie';
+import shortcutReducer from './shortcutSlice';
+import movieReducer from './movieSlice';
 
 export const store = configureStore({
   reducer: {

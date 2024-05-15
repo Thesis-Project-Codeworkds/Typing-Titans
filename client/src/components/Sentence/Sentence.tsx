@@ -14,8 +14,6 @@ const calculateAccuracy = (totalLetters: number, mistakes: number) => {
 
 const Sentence = ({ daily }: { daily: boolean }) => {
 
-
-
   const [sentence, setSentence] = useState('');
   const [letters, setLetters] = useState(sentence.split(''));
   const [myIndex, setMyIndex] = useState(0);
@@ -28,7 +26,7 @@ const Sentence = ({ daily }: { daily: boolean }) => {
   const [prog, setProg] = useState({})
   const [newProg, setNewProg] = useState({})
 
-  const selectedSentence = useAppSelector((state) => state.sentence.sentence);
+  const selectedSentence = useAppSelector((state) => state.sentence);
 
   useEffect(() => {
     if (daily) {

@@ -4,13 +4,13 @@ import Player2 from '../../assets/p2.svg';
 import ReadyButton from '../ReadyButton/ReadyButton';
 import Countdown from '../Countdown/Countdown';
 import UserNameForm from '../UserNameForm/UserNameForm';
+import Chat from '../Chat/Chat';
 
 import socket from '../../socket';
 import { useAppDispatch } from '../../redux/hooks';
-import { setSentence } from '../../redux/sentence';
-import { setShortcut } from '../../redux/shortcut';
-import Chat from '../Chat/Chat';
-import { setMovie } from '../../redux/movie';
+import { setSentence } from '../../redux/sentenceSlice';
+import { setShortcut } from '../../redux/shortcutSlice';
+import { setMovie } from '../../redux/movieSlice';
 
 interface Shortcut {
   name: string;
