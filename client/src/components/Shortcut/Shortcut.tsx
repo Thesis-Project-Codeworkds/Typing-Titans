@@ -27,6 +27,16 @@ const Shortcut = () => {
   const [hint, setHint] = useState(false);
   const [myIndex, setMyIndex] = useState(0);
 
+  const playAgain = () => {
+    setShortcuts(fetchedShortcuts);
+    setTime(0);
+    setIsRunning(false);
+    setEnded(false);
+    setInput([]);
+    setReveal(false);
+    setHint(false);
+  }
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (!isRunning && !ended) setIsRunning(true);
@@ -103,6 +113,7 @@ const Shortcut = () => {
 
   socket.on('start-competition', () => {
     setEnded(false);
+    playAgain();
   });
   
 
