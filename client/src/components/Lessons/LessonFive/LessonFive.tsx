@@ -2,19 +2,24 @@ import "./LessonFive.css";
 import Hands from "../../../assets/Hands.svg";
 import Keyboard from "../../Keyboard/Keyboard";
 import { useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 import {
 	startGame,
 	resetGame,
 	setKeysSequence,
 } from "../../../redux/lessonGameSlice";
-import { setActiveLessonIndex } from "../../../redux/lessonsSlice";
+import { setActiveLessonIndex, completeLesson } from "../../../redux/lessonsSlice";
 
-const LessonThree = () => {
+const LessonFive = () => {
 	const dispatch = useDispatch();
 
 	const handlePreviousChapter = () => {
 		dispatch(setActiveLessonIndex(3));
 	};
+
+	const handleLessonComplete = () => {
+		dispatch(completeLesson('Lesson 5'));
+	}
 
 	const handleStartGame = () => {
 		dispatch(resetGame());
@@ -115,6 +120,7 @@ const LessonThree = () => {
 					</ol>
 					<div className="button-container">
 						<button onClick={handlePreviousChapter}>Previous Chapter</button>
+						<Link to="/training" className="lesson-complete-link"><button onClick={handleLessonComplete}>Complete Lesson</button></Link>
 					</div>
 					<button onClick={handleStartGame}>Start Lesson</button>
 				</div>
@@ -126,4 +132,4 @@ const LessonThree = () => {
 	);
 };
 
-export default LessonThree;
+export default LessonFive;

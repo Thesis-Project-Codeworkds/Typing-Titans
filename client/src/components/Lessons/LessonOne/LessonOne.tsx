@@ -2,12 +2,13 @@ import "./LessonOne.css";
 import Hands from "../../../assets/Hands.svg";
 import Keyboard from "../../Keyboard/Keyboard";
 import { useDispatch } from "react-redux";
-import { setActiveLessonIndex } from "../../../redux/lessonsSlice";
+import { setActiveLessonIndex, completeLesson } from "../../../redux/lessonsSlice";
 
 const LessonOne = () => {
 	const dispatch = useDispatch();
 
 	const handleNextChapter = () => {
+		dispatch(completeLesson('Lesson 1'));
 		dispatch(setActiveLessonIndex(1));
 	};
 
