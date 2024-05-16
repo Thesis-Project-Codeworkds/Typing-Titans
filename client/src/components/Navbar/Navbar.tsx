@@ -23,16 +23,16 @@ const Navbar = () => {
 
         <SignedOut>
           <Link to='/sign-in'>
-            <button>Sign in</button>
+            <button className='sign-button'>Sign in</button>
           </Link>
 
           <Link to='/sign-up'>
-            <button>Sign up</button>
+            <button className='sign-button'>Sign up</button>
           </Link>
         </SignedOut>
 
         <SignedIn>
-          <Link to='/profile'>
+          <Link to='/profile' className='user-profile-pic' style={{ 'backgroundImage': `url(${ user?.imageUrl })` }}>
             { user?.username?.charAt(0).toUpperCase() }
           </Link>
         </SignedIn>
