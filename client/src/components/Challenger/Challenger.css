@@ -1,0 +1,18 @@
+.username {
+  font-size: 28px;
+}
+
+.challenger {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.userimage {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  justify-self: center;
+  background-size: contain;
+  margin-top: 10px;
+}
