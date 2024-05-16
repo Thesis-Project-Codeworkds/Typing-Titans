@@ -7,6 +7,10 @@ import { fetchMovies, fetchShortSentence, fetchShortcuts } from './services/api-
 let readyPlayers: string[] = [];
 let userNames: any = {};
 
+const getUserName = (socketId: string) => {
+  return userNames[socketId] ? userNames[socketId] : 'Anonymous';
+}
+
 const socket = (server: HttpServer) => {
 
   const io = new SocketIOServer(server, {
@@ -24,20 +28,20 @@ const socket = (server: HttpServer) => {
     socket.broadcast.emit('connected');
 
     socket.on('end-competition', (time: number, speed: number, accuracy: number) => {
-      const winner = userNames[socket.id] ? userNames[socket.id] : 'Anonymous';
+      const winner = getUserName(socket.id);
 
       socket.broadcast.emit('winner', winner + ' has won!', time, speed, accuracy);
       socket.emit('winner', 'You won!', time, speed, accuracy);
     });
 
-    socket.on('username', (username: string) => {
+    socket.on('set username', (username: string) => {
       userNames[socket.id] = username;
     });
 
     socket.on('send-message', (msg: string) => {
-      const name = userNames[socket.id] ? userNames[socket.id] : 'Anonymous'
+      const name = getUserName(socket.id);
       socket.broadcast.emit('receive-message', msg, name + ': ')
-    })
+    });
 
     socket.on('isReady', async () => {
       readyPlayers = readyPlayers.includes(socket.id)
