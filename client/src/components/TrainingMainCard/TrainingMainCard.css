@@ -1,0 +1,21 @@
+.keyboard-container-shortcut {
+  text-decoration: none;
+}
+
+.keyboard {
+  transform: scale(.8);
+  transition: transform 1s;
+}
+
+.keyboard:hover {
+  transform: scale(.83);
+  transition: transform 1s;
+}
+
+.key.physical-active .front,
+.key:active .front {
+  transform: translateY(0px);
+  transition: transform 60ms;
+  background: var(--main-color);
+  color: var(--main-bg-color);
+}

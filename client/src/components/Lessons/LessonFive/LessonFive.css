@@ -30,7 +30,7 @@
   margin: 20px;
 }
 
-.text-container h4{
+.text-container h4 {
   text-align: center;
   padding: 20px;
 }
@@ -54,7 +54,10 @@
 .custom-keyboard-style-les2 .key:active .front {
   transform: translateY(0px);
   transition: transform 60ms;
-  background: var(--main-color); 
+  background: var(--main-color);
   color: var(--main-bg-color);
 }
 
+.lesson-complete-link {
+  text-decoration: none;
+}

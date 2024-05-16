@@ -1,0 +1,76 @@
+.card-title {
+  grid-column: 1 / 4;
+  align-self: center;
+}
+
+.typing-race-card {
+  display: flex;
+  grid-column: 1 / 2;
+  justify-content: center;
+}
+
+.typing-race-card,
+.shortcut-race-card,
+.coming-soon-card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  grid-column: span 1;
+}
+
+.typing-race-title,
+.shortcut-race-title,
+.coming-soon-title {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  color: var(--main-color);
+  font-size: 22px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.shortcut-race-title {
+  grid-column: 2 / 3;
+}
+
+
+.shortcut-race-card {
+  display: flex;
+  grid-column: 2 / 3;
+  justify-content: center;
+}
+
+.coming-soon-title {
+  grid-column: 3 / 4;
+}
+
+.coming-soon-card {
+  display: flex;
+  grid-column: 3 / 4;
+  justify-content: center;
+}
+
+.competition-card-svg {
+  max-width: 65%;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.typing-race-card:hover .competition-card-svg,
+.shortcut-race-card:hover .competition-card-svg,
+.coming-soon-card:hover .competition-card-svg {
+  transform: scale(1.1);
+  opacity: 0.2;
+  filter: grayscale(50%);
+}
+
+.typing-race-card:hover .typing-race-title,
+.shortcut-race-card:hover .shortcut-race-title,
+.coming-soon-card:hover .coming-soon-title {
+  visibility: visible;
+  opacity: 1;
+  color: var(--main-color);
+}

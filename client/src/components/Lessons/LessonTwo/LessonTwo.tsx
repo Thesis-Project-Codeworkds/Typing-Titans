@@ -7,7 +7,7 @@ import {
 	resetGame,
 	setKeysSequence,
 } from "../../../redux/lessonGameSlice";
-import { setActiveLessonIndex } from "../../../redux/lessonsSlice";
+import { setActiveLessonIndex, completeLesson } from "../../../redux/lessonsSlice";
 
 const LessonTwo = () => {
 	const dispatch = useDispatch();
@@ -32,6 +32,7 @@ const LessonTwo = () => {
 	};
 
 	const handleNextChapter = () => {
+		dispatch(completeLesson('Lesson 2'));
 		dispatch(setActiveLessonIndex(2));
 	};
 

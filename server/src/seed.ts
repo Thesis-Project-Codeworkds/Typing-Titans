@@ -77,15 +77,27 @@ async function main() {
     });
   }
 
-  const data = JSON.parse(fs.readFileSync('shortcuts.json', 'utf-8'));
+  const shortcutData = JSON.parse(fs.readFileSync('shortcuts.json', 'utf-8'));
   console.log('seeding shortcuts');
 
-  for (let item of data) {
+  for (let item of shortcutData) {
     await prisma.shortcut.create({
       data: {
         name: item.name,
         windows: item.windows,
         mac: item.mac
+      }
+    });
+  }
+
+  const movieData = JSON.parse(fs.readFileSync('movies.json', 'utf-8'));
+  console.log('seeding movies');
+
+  for (let item of movieData) {
+    await prisma.movie.create({
+      data: {
+        title: item.title,
+        image: item.image
       }
     });
   }

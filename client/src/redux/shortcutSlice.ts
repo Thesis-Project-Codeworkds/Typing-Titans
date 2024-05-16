@@ -28,9 +28,8 @@ export const shortcut = createSlice({
   name: 'shortcut',
   initialState,
   reducers: {
-    setShortcut: (state, action: PayloadAction<ShortcutState[]>) => {      
-      state = action.payload;
-      return state
+    setShortcut: (_, action: PayloadAction<ShortcutState[]>) => {
+      return action.payload;
     },
   },
 });

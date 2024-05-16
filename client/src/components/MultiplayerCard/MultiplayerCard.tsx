@@ -4,17 +4,23 @@ import Player2 from '../../assets/p2.svg';
 import ReadyButton from '../ReadyButton/ReadyButton';
 import Countdown from '../Countdown/Countdown';
 import UserNameForm from '../UserNameForm/UserNameForm';
+import Chat from '../Chat/Chat';
 
 import socket from '../../socket';
 import { useAppDispatch } from '../../redux/hooks';
-import { setSentence } from '../../redux/sentence';
-import { setShortcut } from '../../redux/shortcut';
-import Chat from '../Chat/Chat';
+import { setSentence } from '../../redux/sentenceSlice';
+import { setShortcut } from '../../redux/shortcutSlice';
+import { setMovie } from '../../redux/movieSlice';
 
 interface Shortcut {
   name: string;
   windows: string[];
   mac: string[];
+}
+
+interface Movie {
+  title: string;
+  image: string;
 }
 
 const MultiplayerCard = () => {
@@ -30,8 +36,12 @@ const MultiplayerCard = () => {
   }
   if (pathname === "shortcut") {
     socket.on('shortcuts', (shortcut: Shortcut[]) => {
-      console.log('socket.on ~ shortcut:', shortcut);
       dispatch(setShortcut(shortcut));
+    });
+  }
+  if (pathname === "movie") {
+    socket.on('movies', (movies: Movie[]) => {
+      dispatch(setMovie(movies));
     });
   }
 

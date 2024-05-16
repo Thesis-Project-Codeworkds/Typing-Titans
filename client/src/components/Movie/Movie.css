@@ -1,0 +1,18 @@
+.movie-poster-container {
+  align-self: center;
+  max-width: 30vw;
+}
+
+.movie-poster {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.movie-input-field {
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  margin-bottom: 30px;
+  padding: 7px 20px;
+  font-size: 18px;
+}
