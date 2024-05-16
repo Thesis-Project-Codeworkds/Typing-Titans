@@ -1,6 +1,7 @@
 import { SignIn, SignedIn, SignedOut, useClerk } from '@clerk/clerk-react';
 import { Link } from 'react-router-dom';
 
+import profileIcon from '../../assets/default icon fill.svg';
 import chatIcon from '../../assets/Chat-1.svg'
 import bellIcon from '../../assets/Bell.svg'
 import './Navbar.css'
@@ -32,9 +33,9 @@ const Navbar = () => {
         </SignedOut>
 
         <SignedIn>
-          <Link to='/profile' className='user-profile-pic' style={{ 'backgroundImage': `url(${ user?.imageUrl })` }}>
-            { user?.username?.charAt(0).toUpperCase() }
-          </Link>
+          <Link to='/profile' className='user-profile-pic' style={
+            { 'backgroundImage': `url(${ user?.imageUrl ? user?.imageUrl : profileIcon })` }
+          }></Link>
         </SignedIn>
       </div>
     </div>
