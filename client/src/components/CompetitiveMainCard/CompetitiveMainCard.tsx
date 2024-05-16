@@ -34,7 +34,7 @@ const CompetitiveMainCard = () => {
 			)}
 			{ComingSoonSVG && (
 				<>
-					<Link to="/lobby/shortcut" className="coming-soon-card">
+					<Link to="/lobby/movie" className="coming-soon-card">
 					<p className="coming-soon-title">Coming Soon!!!</p>
 						<img
 							src={ComingSoonSVG}
