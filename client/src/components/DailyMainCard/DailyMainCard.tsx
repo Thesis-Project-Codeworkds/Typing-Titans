@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const DailyMainCard = () => {
 	const [date, setDate] = useState(dayjs());
-	const [stats, setStats] = useState({ speed: null, accuracy: null });
+	const [stats, setStats] = useState<{speed: number, accuracy: number}>({ speed: 0, accuracy: 100 });
 
 
 	useEffect(() => {
@@ -24,7 +24,7 @@ const DailyMainCard = () => {
 			setStats({ speed, accuracy });
 		} catch (error) {
 			console.error('Failed to fetch progress:', error);
-			setStats({ speed: null, accuracy: null });  // Reset stats on error
+			setStats({ speed: 0, accuracy: 100 });  // Reset stats on error
 		}
 	};
 
@@ -46,8 +46,8 @@ const DailyMainCard = () => {
 
 				{stats.speed && <>
 					<h2 className='stats-title'>Best Stats of {date.format('DD/MM/YYYY')}</h2>
-					<p className='stats-text'>Speed: {stats.speed ? `${stats.speed} W/minute` : 'Loading...'}</p>
-					<p className='stats-text'>Accuracy: {stats.accuracy ? `${stats.accuracy}%` : 'Loading...'}</p>
+					<p className='stats-text'>Speed: {stats.speed ? `${stats.speed.toFixed(2)} wpm` : 'Loading...'}</p>
+					<p className='stats-text'>Accuracy: {stats.accuracy ? `${stats.accuracy.toFixed(2)}%` : 'Loading...'}</p>
 				</>}
 				{!stats.speed && <h2 className='no-data-available-text'>No data available for this date!</h2>}
 
