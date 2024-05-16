@@ -11,7 +11,7 @@ const UserNameForm = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    socket.emit('username', value);
+    socket.emit('set username', value);
     setUsername(value);
     setValue('');
   };

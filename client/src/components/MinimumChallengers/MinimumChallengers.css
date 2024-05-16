@@ -1,0 +1,29 @@
+.minimum-challengers {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.minimum-value {
+  font-weight: 600;
+  font-size: larger;
+  margin: 5px;
+}
+
+.minimum-button {
+  text-align: center;
+  color: white;
+  height: 30px;
+  width: 10px;
+  padding-left: 12px;
+  background-color: var(--main-color);
+  border: none;
+  align-self: center;
+  justify-self: center;
+}
+
+.minimum {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px;
+}

@@ -16,9 +16,10 @@
   font-size: 48px;
 }
 
-.player-title {
-
+.username {
   font-size: 28px;
+  grid-row: 3;
+  grid-column: 2;
 }
 
 .player-one-container,
@@ -27,9 +28,25 @@
   margin: 10px;
 }
 
+.challengers {
+  grid-row: 2 / 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left {
+  grid-column: 1;
+  row-gap: 70px;
+}
+
+.right {
+  grid-column: 3;
+  row-gap: 70px;
+}
+
 .player-one-container {
   grid-column: 1 / 2;
-
 }
 
 .player-two-container {
@@ -53,10 +70,20 @@
   padding: 30px;
 }
 
+.middle-container {
+  grid-row: 2;
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
 .countdown-container {
   grid-row: 3 / 4;
   grid-column: 2 / 3;
   margin: auto;
+  margin-top: 50px;
   animation: countdown 4s forwards 1s 1;
   min-width: 100px;
   font-size: 72px;
