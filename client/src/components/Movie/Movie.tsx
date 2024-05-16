@@ -118,9 +118,11 @@ const Movie = () => {
   return (
     <div className="shortcut-card-container">
       <h2 className='shortcut-title'>Movie Race</h2>
-      <img src={movies[0]?.image} alt="Movie Img" className='shortcut-div' />
+      <div className='movie-poster-container'>
+        <img src={movies[0]?.image} alt="Movie Img" className='shortcut-div movie-poster' />
+      </div>
       <div>
-        <input type="text" value={input} onChange={(e) => setInput(e.target.value)} autoFocus />
+        <input type="text" value={input} onChange={(e) => setInput(e.target.value)} autoFocus className='movie-input-field' />
         <h3 className='shortcut-time'>Time: {(Math.round(time * 100) / 100).toFixed(1)} s</h3>
         {!hint && <button className='shortcut-button' onClick={() => { if (reveal) setHint(true) }}>{countdown[myIndex]}</button>}
         <h5 className='shortcut-hint'>{hint && `${movies[0]?.title}`}</h5>

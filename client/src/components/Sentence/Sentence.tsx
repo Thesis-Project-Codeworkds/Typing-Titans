@@ -160,7 +160,7 @@ const Sentence = ({ daily }: { daily: boolean }) => {
       <h3 className='stats'>Accuracy: {(Math.round(accuracy * 100) / 100).toFixed(1)} %</h3>
       {!daily && <Overlay ended={ended} />}
       {daily &&
-        <><button onClick={playAgain}>Retry</button>
+        <><button onClick={playAgain} className='retry-button'>Retry</button>
           <DailyOverlay ended={ended} data={prog} current={newProg} retry={playAgain} /></>
       }
     </div>

@@ -21,6 +21,7 @@
 
 .stats {
   padding: 5px;
+  margin: 10px;
 }
 
 .button {
@@ -29,4 +30,13 @@
   background-color: var(--main-color);
   border: none;
   padding: 10px 30px;
+}
+
+.retry-button {
+  background-color: var(--main-color);
+  border: none;
+  color: var(--main-bg-color);
+  padding: 10px 40px;
+  margin-top: 25px;
+  font-size: 18px;
 }
