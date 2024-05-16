@@ -14,7 +14,7 @@ const calculateAccuracy = (totalLetters: number, mistakes: number) => {
 
 const Sentence = ({ daily }: { daily: boolean }) => {
 
-  const [sentence, setSentence] = useState('');
+  const [sentence, setSentence] = useState(' ');
   const [letters, setLetters] = useState(sentence.split(''));
   const [myIndex, setMyIndex] = useState(0);
   const [time, setTime] = useState(0);
@@ -101,7 +101,8 @@ const Sentence = ({ daily }: { daily: boolean }) => {
       if (isRunning && myIndex < totalLetters) {
         setSpeed(typingSpeed);
         timer = setInterval(() => setTime((prevTime) => prevTime + 0.01), 10);
-      } else if (myIndex === totalLetters && isRunning) {
+      } else if (myIndex === totalLetters) {
+        
         clearInterval(timer);
         const accuracy = calculateAccuracy(totalLetters, mistakes);
         setSpeed(typingSpeed);
@@ -109,7 +110,6 @@ const Sentence = ({ daily }: { daily: boolean }) => {
         if (daily) {
           setNewProg({ speed: typingSpeed, accuracy: accuracy })
           const data = await updateProgress(1, typingSpeed, accuracy);
-          console.log('Data from async operation:', data);
           setProg(data)
           setEnded(true);
         }

@@ -15,11 +15,11 @@ const Overlay = ({ended}: {ended: boolean}) => {
   const [countdown, setCountdown] = useState(false);
 
   useEffect(() => {
-    socket.on('winner', (winner: string, time: number, speed: number, accuracy: number) => {
+    socket.on('winner', (winner: string, time: number, speed: number, accuracy: number) => {      
       setOverlay(winner);
       setTime(time);
       if (pathname === 'typing') {
-        setSpeed(speed);
+      setSpeed(speed);
         setAccuracy(accuracy);
       }
     });
@@ -37,7 +37,7 @@ const Overlay = ({ended}: {ended: boolean}) => {
       socket.off('start-competition');
       socket.off('countdown');
     };
-  }, [ pathname ]);
+  }, [ ended ]);
 
   const handleButtonClick = () => {
     const toggleReady = !playAgain;
