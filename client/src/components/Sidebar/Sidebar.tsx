@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { toggleSidebar } from '../../redux/sidebarSlice';
-import { Link } from 'react-router-dom';
+
 import keyboard from '../../assets/purpleKeyboard.svg'
 import menuIcon from '../../assets/menuIcon.svg'
 import friendsIcon from '../../assets/friendsIcon.svg'
