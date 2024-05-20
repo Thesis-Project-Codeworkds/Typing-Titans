@@ -12,8 +12,9 @@
 <div align="center">
     <img src="./client/src/assets/landingPage.png" alt="Landing Page">
 </div>
+<br />
 
-Typing Titans is an engaging learning platform designed to help users improve their typing skills through competitive races, built with a modern tech stack including TypeScript, [![React][React.js]][React-url], Redux, Express, Socket.io, and PostgreSQL, the project involved integrating various APIs to retrieve and display essential data. Real-time user connectivity was enabled using Socket.io, supporting live competitions and chat functionalities. Comprehensive logic was developed to facilitate competitive typing races between users, making Typing Titans an interactive and effective tool for enhancing typing speed and accuracy.
+Typing Titans is an engaging learning platform designed to help users improve their typing skills through competitive races, built with a modern tech stack including TypeScript, *[![React][React.js]][React-url], Redux, Express, Socket.io, and PostgreSQL, the project involved integrating various APIs to retrieve and display essential data. Real-time user connectivity was enabled using Socket.io, supporting live competitions and chat functionalities. Comprehensive logic was developed to facilitate competitive typing races between users, making Typing Titans an interactive and effective tool for enhancing typing speed and accuracy.
 
 <!-- GETTING STARTED -->
 ## Getting Started
