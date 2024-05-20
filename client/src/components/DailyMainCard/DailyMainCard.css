@@ -1,0 +1,56 @@
+.customCalendar {
+  color: var(--main-color);
+  border-radius: 10px;
+  border: 1px solid var(--main-color);
+}
+
+.customCalendar .MuiPickersDay-root {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.customCalendar .Mui-selected {
+  background-color: var(--main-color) !important;
+  color: white !important;
+}
+
+
+.customCalendar .MuiPickersDay-dayWithMargin {
+  color: var(--main-color);
+}
+
+.customCalendar .MuiPickersDay-dayWithMargin.MuiPickersDay-today {
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+
+}
+
+.no-data-available-text {
+  color: var(--main-color);
+  margin: 40px 10px 0px 10px;
+}
+
+.stats-title {
+  color: var(--main-color);
+  margin: 40px 10px 40px 10px;
+}
+
+.stats-text {
+  color: var(--main-color);
+  margin-bottom: 20px;
+}
+
+.challenge-button {
+  background-color: var(--main-color);
+  color: var(--main-bg-color);
+  border: none;
+  padding: 10px;
+  transition: transform .5s;
+  margin-top: 40px;
+}
+
+.challenge-button:hover {
+  transform: scale(1.05);
+  transition: transform .5s;
+  cursor: pointer;
+}

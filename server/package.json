@@ -6,24 +6,30 @@
   "scripts": {
     "dev": "tsc && concurrently \" tsc -watch \" \" nodemon ./dist/index.js \"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install && npx tsc",
+    "build": "npm i && npx prisma generate --schema=./prisma/schema.prisma && npx prisma migrate dev --name init --schema ./prisma/schema.prisma && npx tsc",    
     "start": "node dist/index.js",
-    "serve": "npm run build && npm run start"
+    "serve": "npm run build && npm run start",
+    "seed": "npx ts-node src/seed.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.13.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "body-parser": "^1.20.2",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "prisma": "^5.13.0",
+    "prisma-extension-random": "^0.2.2",
     "socket.io": "^4.7.5",
-    "typescript": "^5.4.5",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21"
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@socket.io/admin-ui": "^0.5.1",
+    "@types/node": "^20.12.11",
     "nodemon": "^3.1.0"
   }
 }

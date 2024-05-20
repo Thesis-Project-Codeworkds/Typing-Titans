@@ -1,6 +1,8 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'); */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -13,7 +15,11 @@
   --main-bg-color: #FFFFFF;
   --secondary-bg-color: #F6F6F6;
   --bg-green: #04e042;
+  --bg-red: #ff4470;
+  --my-turqoise: rgba(0, 255, 178, 0.5);
+  --my-pale: #FFDBDB;
   text-align: center;
   background-color: var(--secondary-bg-color);
   font-family: sans-serif;
+  min-height: 100vh;
 }

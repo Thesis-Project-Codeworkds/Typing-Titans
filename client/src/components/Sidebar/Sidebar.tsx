@@ -1,6 +1,9 @@
+import { Link } from 'react-router-dom';
+
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { toggleSidebar } from '../../redux/sidebarSlice';
-import { Link } from 'react-router-dom';
+import { SignOutButton } from '@clerk/clerk-react';
+
 import keyboard from '../../assets/purpleKeyboard.svg'
 import menuIcon from '../../assets/menuIcon.svg'
 import friendsIcon from '../../assets/friendsIcon.svg'
@@ -21,8 +24,8 @@ const Sidebar = () => {
       <div className={`main-side-icon-container ${expanded ? 'expanded' : ''}`}>
         <img src={expanded ? dotsMenuIcon : menuIcon} alt="Menu Icon" onClick={() => dispatch(toggleSidebar())}/>
         <div className='main-side-icon-container-expanded'>
-          <Link to="/competition"><img src={keyboard} alt="Keyboard Icon" /></Link>
-          {expanded && <Link to="/competition"><span>MAIN HUB</span></Link> }
+          <Link to="/"><img src={keyboard} alt="Keyboard Icon" /></Link>
+          {expanded && <Link to="/"><span>MAIN HUB</span></Link> }
         </div>
         <div className='main-side-icon-container-expanded'>
           <img src={friendsIcon} alt="Friends Icon" />
@@ -44,8 +47,8 @@ const Sidebar = () => {
           {expanded && <span>HELP CENTER</span>}
         </div>
         <div className='main-side-icon-container-expanded'>
-          <img src={exitIcon} alt="Exit Icon" />
-          {expanded && <span>LOG OUT</span>}
+          <SignOutButton><img src={exitIcon} alt="Exit Icon" /></SignOutButton>
+          {expanded && <SignOutButton><span>LOG OUT</span></SignOutButton>}
         </div>
       </div>
     </div>

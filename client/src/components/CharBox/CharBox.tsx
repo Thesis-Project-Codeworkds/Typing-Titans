@@ -7,17 +7,21 @@ interface CharBoxProps {
   mistake: boolean;
 }
 
-const CharBox = ({ char, typed, current, mistake }: CharBoxProps) => {
-  const baseClass = 'charDefault';
-  const spaceClass = char === ' ' ? 'charSpace' : '';
-  const currentClass = current ? 'charCurrent' : '';
-  const typedClass = typed ? 'charTyped' : '';
-  const mistakeClass = current && mistake ? 'charMistake' : '';
+const combineClasses = (classes: string[]) => {
+  return classes.reduce((combined, c) => combined + c + ' ', '').trim();
+};
 
-  const combinedClasses = `${baseClass} ${currentClass} ${typedClass} ${mistakeClass} ${spaceClass}`.trim();
+const CharBox = ({ char, typed, current, mistake }: CharBoxProps) => {
+  const baseClass = 'char-default';
+  const spaceClass = char === ' ' ? 'char-space' : '';
+  const currentClass = current ? 'char-current' : '';
+  const typedClass = typed ? 'char-typed' : '';
+  const mistakeClass = current && mistake ? 'char-mistake' : '';
 
   return (
-    <h3 className={combinedClasses}>{char}</h3>
+    <h3 className={
+      combineClasses([ baseClass, spaceClass, currentClass, typedClass, mistakeClass ])
+    }>{ char }</h3>
   );
 }
 

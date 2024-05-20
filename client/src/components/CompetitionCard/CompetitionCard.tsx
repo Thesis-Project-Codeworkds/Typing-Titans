@@ -1,14 +1,25 @@
 import Sentence from '../Sentence/Sentence';
 import './CompetitionCard.css'
 
+import socket from '../../socket';
+import { useAppDispatch } from '../../redux/hooks';
+import { setSentence } from '../../redux/sentenceSlice';
 
 const CompetitionCard = () => {
+  const pathname = window.location.pathname.split('/').pop() || "";
+  const daily = pathname === 'daily';
+
+  const dispatch = useAppDispatch();
+
+  socket.on('sentence', (sentence: string) => {
+    dispatch(setSentence(sentence));
+  });
 
   return (
     <div className="competition-card-container">
-      <h2 className='competition-title'>Typing Race</h2>
+      <h2 className='competition-title'>{daily ? 'Daily Challenge' : 'Typing Race'}</h2>
       <div className='sentence-div'>
-        <Sentence />
+        <Sentence daily={daily} />
       </div>
 
     </div>

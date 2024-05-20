@@ -4,11 +4,17 @@ import './Sentence.css'
 import CharBox from '../CharBox/CharBox';
 import socket from '../../socket';
 import Overlay from '../Overlay/Overlay';
-import { fetchShortSentence } from '../../services/ninja-api-service';
+import { useAppSelector } from '../../redux/hooks';
+import { fetchDailySentence, updateProgress } from '../../services';
+import DailyOverlay from '../DailyOverlay/DailyOverlay';
 
-const Sentence = () => {
+const calculateAccuracy = (totalLetters: number, mistakes: number) => {
+  return totalLetters > 0 ? (100 - ((mistakes / totalLetters) * 100)) : 100;
+}
 
-  const [sentence, setSentence] = useState("this is the first sentence that users are going to have to type");
+const Sentence = ({ daily }: { daily: boolean }) => {
+
+  const [sentence, setSentence] = useState(' ');
   const [letters, setLetters] = useState(sentence.split(''));
   const [myIndex, setMyIndex] = useState(0);
   const [time, setTime] = useState(0);
@@ -17,6 +23,22 @@ const Sentence = () => {
   const [wrongInput, setWrongInput] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
   const [ended, setEnded] = useState(false);
+  const [prog, setProg] = useState({})
+  const [newProg, setNewProg] = useState({})
+
+  const selectedSentence = useAppSelector((state) => state.sentence);
+
+  useEffect(() => {
+    if (daily) {
+      fetchDailySentence().then(data => {
+        setSentence(data);
+        setLetters(data.split(''));
+      });
+    } else {
+      setSentence(selectedSentence);
+      setLetters(selectedSentence.split(''));
+    }
+  }, [daily, selectedSentence]);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -27,12 +49,13 @@ const Sentence = () => {
   };
 
   // Select a random sentence and reset the states
-  const pickSentence = async () => {
+  const playAgain = async () => {
 
-    const fetchedSentence = await fetchShortSentence();
-
-    setSentence(fetchedSentence);
-    setLetters(fetchedSentence.split(''));
+    if (!daily) {
+      // Retrieve the current sentence from state if not 'daily'
+      setSentence(selectedSentence);
+      setLetters(selectedSentence.split(''));
+    }
     setMyIndex(0);
     setTime(0);
     setSpeed(0);
@@ -69,44 +92,77 @@ const Sentence = () => {
   // Update timer and calculate speed/accuracy
   useEffect(() => {
     let timer: number | undefined;
-    const totalLetters = letters.length;
 
-    if (isRunning && myIndex < totalLetters) {
-      timer = setInterval(() => setTime((prevTime) => prevTime + 0.01), 10);
-    } else if (myIndex === totalLetters) {
-      clearInterval(timer);
-
+    const asyncHandler = async () => {
+      const totalLetters = letters.length;
       const wordsTyped = totalLetters / 5;
-      const typingSpeed = Math.trunc(60 * (wordsTyped / time));
-      setSpeed(typingSpeed);
-      socket.emit('end-competition', typingSpeed, time);
-      setIsRunning(false);
-    }
-    socket.on('winner', () => {
-      setEnded(true)
-    })
+      const typingSpeed = 60 * (wordsTyped / time);
 
-    return () => clearInterval(timer);
-  }, [isRunning, time, letters.length, myIndex]);
+      if (isRunning && myIndex < totalLetters) {
+        setSpeed(typingSpeed);
+        timer = setInterval(() => setTime((prevTime) => prevTime + 0.01), 10);
+      } else if (myIndex === totalLetters) {
+        
+        clearInterval(timer);
+        const accuracy = calculateAccuracy(totalLetters, mistakes);
+        setSpeed(typingSpeed);
+
+        if (daily) {
+          setNewProg({ speed: typingSpeed, accuracy: accuracy })
+          const data = await updateProgress(1, typingSpeed, accuracy);
+          setProg(data)
+          setEnded(true);
+        }
+
+        if (!daily) {
+          socket.emit('end-competition', time, typingSpeed, accuracy);
+        }
+        setIsRunning(false);
+      }
+    };
+
+    asyncHandler();
+
+    if (!daily) {
+      socket.on('winner', () => {
+        setEnded(true);
+      });
+    }
+
+    return () => {
+      clearInterval(timer);
+      if (!daily) {
+        socket.off('winner');
+      }
+    };
+  }, [isRunning, time, letters.length, myIndex, mistakes, daily]);
+
+
+  if (!daily) socket.on('start-competition', () => {
+    setEnded(false);
+    playAgain();
+  });
 
   const totalLetters = letters.length;
-  const accuracy = totalLetters > 0 ? (100 - ((mistakes / totalLetters) * 100)) : 100;
-
+  const accuracy = calculateAccuracy(totalLetters, mistakes);
 
   return (
     <div>
-      <div className='sentenceBox' ref={scrollContainerRef}>
-        <div className='sentenceContainer'>
-          {letters.map((char, index) => (
+      <div className='sentence-box' ref={scrollContainerRef}>
+        <div className='sentence-container'>
+          {letters.map((char: string, index: number) => (
             <CharBox key={index} char={char} typed={index < myIndex} current={index === myIndex} mistake={wrongInput && index === myIndex} />
           ))}
         </div>
       </div>
-      <h3 className='stats'>Time: {(Math.round(time * 100) / 100).toFixed(2)} s</h3>
-      <h3 className='stats'>Speed: {(Math.round(speed * 100) / 100).toFixed(2)} w/min</h3>
-      <h3 className='stats'>Accuracy: {(Math.round(accuracy * 100) / 100).toFixed(2)} %</h3>
-      <button onClick={pickSentence} className='button'>Restart</button>
-      {ended && <Overlay />}
+      <h3 className='stats'>Time: {(Math.round(time * 100) / 100).toFixed(1)} s</h3>
+      <h3 className='stats'>Speed: {(Math.round(speed * 100) / 100).toFixed(0)} words/min</h3>
+      <h3 className='stats'>Accuracy: {(Math.round(accuracy * 100) / 100).toFixed(1)} %</h3>
+      {!daily && <Overlay ended={ended} />}
+      {daily &&
+        <><button onClick={playAgain} className='retry-button'>Retry</button>
+          <DailyOverlay ended={ended} data={prog} current={newProg} retry={playAgain} /></>
+      }
     </div>
   )
 }

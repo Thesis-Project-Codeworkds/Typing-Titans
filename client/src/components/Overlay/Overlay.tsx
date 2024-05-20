@@ -1,46 +1,78 @@
-import { useState } from 'react';
-import './Overlay.css'
+import { useState, useEffect } from 'react';
+import './Overlay.css';
 import socket from '../../socket';
 import Countdown from '../Countdown/Countdown';
 
-const Overlay = () => {
+const Overlay = ({ended}: {ended: boolean}) => {
+
+  const pathname = window.location.pathname.split('/').pop() || "";
 
   const [overlay, setOverlay] = useState('');
-  const [speed, setSpeed] = useState('');
   const [time, setTime] = useState(0);
+  const [speed, setSpeed] = useState(0);
+  const [accuracy, setAccuracy] = useState(0);
   const [playAgain, setPlayAgain] = useState(false);
+  const [countdown, setCountdown] = useState(false);
 
-  socket.on('winner', (winner, speed, time) => {
-    setOverlay(winner);
-    setSpeed(speed);
-    setTime(time);
-  });
+  useEffect(() => {
+    socket.on('winner', (winner: string, time: number, speed: number, accuracy: number) => {      
+      setOverlay(winner);
+      setTime(time);
+      if (pathname === 'typing') {
+      setSpeed(speed);
+        setAccuracy(accuracy);
+      }
+    });
+
+    socket.on('start-competition', () => {
+      setPlayAgain(false);
+    });
+
+    socket.on('countdown', () => {
+      setCountdown(true);
+    });
+
+    return () => {
+      socket.off('winner');
+      socket.off('start-competition');
+      socket.off('countdown');
+    };
+  }, [ ended ]);
 
   const handleButtonClick = () => {
     const toggleReady = !playAgain;
-
     socket.emit('isReady', toggleReady);
     setPlayAgain(toggleReady);
   };
 
-  socket.on('start-competition', () => {
-    setPlayAgain(false);
-  });
+  if (!ended) return <></>;
 
   return (
-    <div id='overlayBckgrnd'>
-      <div id='overlayContainer'>
-        <h1>
-          {overlay}
-        </h1>
+    <div id='overlay-background'>
+      <div id='overlay-container'>
+        <h1>{overlay}</h1>
+
         <h2>
-          {time.toFixed(2)} s <br />
-          {speed}
+          <div className='metrics'>
+            {time.toFixed(2)} s <br />
+            {pathname === 'typing' &&
+              <>
+                {speed.toFixed(2)} words per minute 🐇 <br />
+                {accuracy.toFixed(2)}% accuracy <br />
+              </>}
+          </div>
         </h2>
-        <button id='overlayButton' onClick={handleButtonClick}>
-          {playAgain ? <>Waiting <br /> for Opponent</> : 'Play Again?'}
+
+        <div className='overlay-countdown'>
+          <Countdown path={pathname} />
+        </div>
+
+        <button
+          onClick={handleButtonClick}
+          className={`overlay-button ${playAgain && 'ready'} ${countdown && 'hidden'}`}
+        >
+          {playAgain ? 'Waiting for Opponent' : 'Play Again?'}
         </button>
-        <Countdown />
       </div>
     </div>
   );

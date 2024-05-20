@@ -1,0 +1,236 @@
+[
+
+    {
+        "name": "file menu",
+        "windows": [
+            "Alt",
+            "f"
+        ],
+        "mac": [
+            "Meta",
+            "f"
+        ]
+    },
+    {
+        "name": "previous history",
+        "windows": [
+            "Alt",
+            "ArrowLeft"
+        ],
+        "mac": [
+            "Meta",
+            "ArrowLeft"
+        ]
+    },
+    {
+        "name": "forward in browser",
+        "windows": [
+            "Alt",
+            "ArrowRight"
+        ],
+        "mac": [
+            "Meta",
+            "ArrowRight"
+        ]
+    },
+    {
+        "name": "select all",
+        "windows": [
+            "Control",
+            "a"
+        ],
+        "mac": [
+            "Meta",
+            "a"
+        ]
+    },
+    {
+        "name": "cut",
+        "windows": [
+            "Control",
+            "x"
+        ],
+        "mac": [
+            "Meta",
+            "x"
+        ]
+    },
+    {
+        "name": "delete",
+        "windows": [
+            "Control",
+            "Delete"
+        ],
+        "mac": [
+            "Meta",
+            "Delete"
+        ]
+    },
+    {
+        "name": "copy",
+        "windows": [
+            "Control",
+            "c"
+        ],
+        "mac": [
+            "Meta",
+            "c"
+        ]
+    },
+    {
+        "name": "paste",
+        "windows": [
+            "Control",
+            "v"
+        ],
+        "mac": [
+            "Meta",
+            "v"
+        ]
+    },
+    {
+        "name": "save",
+        "windows": [
+            "Control",
+            "s"
+        ],
+        "mac": [
+            "Meta",
+            "s"
+        ]
+    },
+    {
+        "name": "undo",
+        "windows": [
+            "Control",
+            "z"
+        ],
+        "mac": [
+            "Meta",
+            "z"
+        ]
+    },
+    {
+        "name": "refresh",
+        "windows": [
+            "Control",
+            "r"
+        ],
+        "mac": [
+            "Meta",
+            "r"
+        ]
+    },
+    {
+        "name": "history",
+        "windows": [
+            "Control",
+            "h"
+        ],
+        "mac": [
+            "Meta",
+            "y"
+        ]
+    },
+    {
+        "name": "downloads",
+        "windows": [
+            "Control",
+            "j"
+        ],
+        "mac": [
+            "Meta",
+            "Alt",
+            "l"
+        ]
+    },
+    {
+        "name": "find",
+        "windows": [
+            "Control",
+            "f"
+        ],
+        "mac": [
+            "Meta",
+            "f"
+        ]
+    },
+    {
+        "name": "print",
+        "windows": [
+            "Control",
+            "p"
+        ],
+        "mac": [
+            "Meta",
+            "p"
+        ]
+    },
+    {
+        "name": "zoom in",
+        "windows": [
+            "Control",
+            "+"
+        ],
+        "mac": [
+            "Meta",
+            "+"
+        ]
+    },
+    {
+        "name": "zoom out",
+        "windows": [
+            "Control",
+            "-"
+        ],
+        "mac": [
+            "Meta",
+            "-"
+        ]
+    },
+    {
+        "name": "redo",
+        "windows": [
+            "Control",
+            "y"
+        ],
+        "mac": [
+            "Meta",
+            "Shift",
+            "z"
+        ]
+    },
+    {
+        "name": "insert hyperlink",
+        "windows": [
+            "Control",
+            "k"
+        ],
+        "mac": [
+            "Meta",
+            "k"
+        ]
+    },
+    {
+        "name": "move left word",
+        "windows": [
+            "Control",
+            "ArrowLeft"
+        ],
+        "mac": [
+            "Alt",
+            "ArrowLeft"
+        ]
+    },
+    {
+        "name": "move right word",
+        "windows": [
+            "Control",
+            "ArrowRight"
+        ],
+        "mac": [
+            "Alt",
+            "ArrowRight"
+        ]
+    }
+]

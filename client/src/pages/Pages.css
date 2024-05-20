@@ -1,0 +1,30 @@
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 125px -10px 205px;
+  border-radius: 20px;
+  color: var(--main-color);
+}
+
+.sign-out-button:hover {
+  cursor: pointer;
+}
+
+.sign-out-button {
+  color: white;
+  height: 30px;
+  width: 120px;
+  margin-left: 20px;
+  background-color: var(--main-color);
+  border: none;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.sign-out-container {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  margin-right: 40px;
+}
